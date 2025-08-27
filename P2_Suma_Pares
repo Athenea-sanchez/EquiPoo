@@ -1,19 +1,19 @@
-import java.util.Scanner;
-public class SumaPares {
-	public static void main(String[] args) {
+import java.util.Scanner;//importamos la librería para poder crear la clase scanner que se encargue de realizar el método (función) escanear
+public class SumaPares { 
+	public static void main(String[] args) { //Creamos la clase principal 
 		//Declración de variables 
 		int n1, n2;
-		int suma = 0;
+		int suma = 0; //Debemos inicializar la variable suma en cero para que permita guardar valores posteriormente
 		int mayor, menor;
-		Scanner sc = new Scanner(System.in);
-		//Pedir datos al usuario
+		Scanner sc = new Scanner(System.in); //El usuario ingresa valores, por ejemplo:
+		//Pedir datos al usuario y 5
 		System.out.println("Por favor introduzca un número entero");
 		n1 = sc.nextInt();
 		System.out.println("Introduzca otro número entero:");
 		n2 = sc.nextInt();
 		//Validar cual es el número mayor y el menor
-		if (n1 > n2){
-			mayor = n1;
+		if (n1 > n2){ //Verificamos cual es el número mayor: n1=
+			mayor = n1; 
 			menor = n2;
 		} else {
 			mayor = n2;
@@ -31,11 +31,3 @@ public class SumaPares {
 		sc.close();
 	}
 }
-/*¿Qué hace el programa?
-El programa define cual es el numero mayor y menor de los 2 que has introducido
-Ejemplo: 20 y 5
-Después calcula todos los numeros que hay entre estos 2 enteros y verifica si son pares 
-calculandoles el módulo
-En caso de que sean pares los suma: 6+8+10+12+14+16+18+20
-Y arroja el total de la suma: 104 para este caso*/
-
