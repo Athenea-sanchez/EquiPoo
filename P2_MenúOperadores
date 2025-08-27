@@ -1,2 +1,142 @@
-// HOLAAAA
+import java.util.Scanner;
 
+public class Menu {
+    public static void main(String[] args) {
+        // Variables
+        float a, b; // Variables para operadores aritmeticos
+        char palabra; // Variable que se ocupara para operador de asignacion
+        float c; // Variable para operador unario
+        int opcion;
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Elige la opcion del operador a ocupar");
+        System.out.println("1.- Operadores aritmeticos");
+        System.out.println("2.- Operadores de asignación");
+        System.out.println("3.- Operadores unarios");
+        System.out.println("4.- Operador instanceof");
+        System.out.println("5.- Operador Condicional");
+        System.out.println("6.- Operadores incrementales");
+        System.out.println("7.- Operadores relacionales");
+        System.out.println("8.- Operadores logicos");
+        System.out.println("9.- Operadores de concatenación de cadena de caracteres");
+        System.out.println("10.- Operadores a nivel bits");
+        System.out.println("11.- Salir");
+        opcion = sc.nextInt();
+
+        switch (opcion) {
+            case 1:
+                System.out.println("Elija la operacion que desea realizar");
+                int ari;
+                System.out.println("1. Suma");
+                System.out.println("2. Resta");
+                System.out.println("3. Multiplicación");
+                System.out.println("4. Division");
+                System.out.println("5. Resto de la división (Modulo)");
+                System.out.println("6. Salir");
+                ari = sc.nextInt();
+
+                switch (ari) {
+                    case 1: // Case para suma
+                        System.out.println("Inserte el primer numero para realizar la operacion");
+                        a = sc.nextFloat();
+                        System.out.println("Inserte el segundo numero para realizar la operacion");
+                        b = sc.nextFloat();
+                        float suma;
+                        suma = a + b;
+                        System.out.println("El resultado de la suma es : " + suma);
+                        break;
+
+                    case 2: // case para resta
+                        System.out.println("Inserte el primer numero para realizar la operacion");
+                        a = sc.nextFloat();
+                        System.out.println("Inserte el segundo numero para realizar la operacion");
+                        b = sc.nextFloat();
+                        float resta;
+                        resta = a - b;
+                        System.out.println("El resultado de la resta es : " + resta);
+                        break;
+
+                    case 3: // case para multiplicacion
+                        System.out.println("Inserte el primer numero para realizar la operacion");
+                        a = sc.nextFloat();
+                        System.out.println("Inserte el segundo numero para realizar la operacion");
+                        b = sc.nextFloat();
+                        float multi;
+                        multi = a * b;
+                        System.out.println("El resultado de la multiplicacion es : " + multi);
+                        break;
+
+                    case 4: // case para division
+                        System.out.println("Inserte el primer numero para realizar la operacion");
+                        a = sc.nextFloat();
+                        System.out.println("Inserte el segundo numero para realizar la operacion");
+                        b = sc.nextFloat();
+                        float div;
+                        div = a / b;
+                        System.out.println("El resultado de la division es : " + div);
+                        break;
+
+                    case 5: // case para modulo
+                        System.out.println("Inserte el primer numero para realizar la operacion");
+                        a = sc.nextFloat();
+                        System.out.println("Inserte el segundo numero para realizar la operacion");
+                        b = sc.nextFloat();
+                        float mod;
+                        mod = a % b;
+                        System.out.println("El resultado del modulo es : " + mod);
+                        break;
+
+                    case 6:
+                        // salir
+                        System.out.println("Saliendo");
+                        break;
+
+                    default:
+                        // ninguno de los anteriores
+                        System.out.println("Su seleccion no es correcta");
+                        break;
+                }
+                break;
+
+            case 2:
+                System.out.println("Nombre de la variable a la que quiere asignarle un valor");
+                char variable;
+                variable = sc.next().charAt(0);
+                System.out.println("Valor numerico a asignar: ");
+                float contenido;
+                contenido = sc.nextFloat();
+                System.out.println("Se ha asignado exitosamente el valor de: " + contenido + " a la variable: " + variable);
+                System.out.println(variable + " = " + contenido);
+                break;
+
+            case 3:
+                System.out.println("Numero a asignar signo");
+                c = sc.nextFloat();
+                System.out.println("Negativo (N) o Positivo (P)?");
+                char signo;
+                signo = sc.next().charAt(0);
+                if (signo == 'P') {
+                    c = +c;
+                    System.out.println("Tu numero con signo es:" + c);
+                } else if (signo == 'N') {
+                    c = -c;
+                    System.out.println("Tu numero con signo es:" + c);
+                } else {
+                    System.out.println("Ingrese una opcion valida");
+                }
+                break;
+
+            case 4:
+                // salir
+                System.out.println("Hasta luego");
+                break;
+
+            default:
+                // ninguno de los anteriores
+                System.out.println("Su seleccion no es correcta");
+                break;
+        }
+
+        sc.close();
+    }
+}
