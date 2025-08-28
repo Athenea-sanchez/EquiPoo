@@ -126,15 +126,95 @@ public class Menu {
                 }
                 break;
 
-            case 4:
-                // salir
-                System.out.println("Hasta luego");
-                break;
+           // case 4://Operador instance of 
 
-            default:
-                // ninguno de los anteriores
-                System.out.println("Su seleccion no es correcta");
-                break;
+
+              
+           // case 5 : //Operadores condicionales 
+
+            //case 6: //Operadores incrementales 
+
+
+            case 7: // Operadores relacionales
+          System.out.println("Ingrese el primer número:");
+          float num1 = sc.nextFloat();
+          System.out.println("Ingrese el segundo número:");
+          float num2 = sc.nextFloat();
+    
+          System.out.println("\nLa relacion de loss numeros es ");
+          System.out.println("Números ingresados: " + num1 + " y " + num2);
+          System.out.println("--------------------------------");
+    
+          // Mayor que
+         System.out.println(num1 + " > " + num2 + " : " + (num1 > num2));
+         
+         // Mayor o igual que
+          System.out.println(num1 + " >= " + num2 + " : " + (num1 >= num2));
+    
+         // Menor que
+         System.out.println(num1 + " < " + num2 + " : " + (num1 < num2));
+    
+          // Menor o igual que
+          System.out.println(num1 + " <= " + num2 + " : " + (num1 <= num2));
+    
+         // Igual que
+         System.out.println(num1 + " == " + num2 + " : " + (num1 == num2));
+    
+           // Diferente que
+           System.out.println(num1 + " != " + num2 + " : " + (num1 != num2));
+    
+          break;
+
+        
+         case 8: // Operadores lógicos
+         System.out.println("Ingrese el primer valor booleano (true/false):");
+         boolean bool1 = sc.nextBoolean();
+         System.out.println("Ingrese el segundo valor booleano (true/false):");
+         boolean bool2 = sc.nextBoolean();
+         System.out.println("Valores ingresados: " + bool1 + " y " + bool2);
+         System.out.println("Aplicando operadores");
+    
+           // AND lógico (&&)
+          System.out.println(bool1 + " && " + bool2 + " : " + (bool1 && bool2));
+    
+         // OR lógico (||)
+          System.out.println(bool1 + " || " + bool2 + " : " + (bool1 || bool2));
+    
+         // NOT lógico (!)
+           System.out.println("!" + bool1 + " : " + (!bool1));
+         System.out.println("!" + bool2 + " : " + (!bool2));
+    
+         // XOR lógico (^) - OR exclusivo
+          System.out.println(bool1 + " ^ " + bool2 + " : " + (bool1 ^ bool2));
+    
+          break;
+
+
+         case 9: //Operadores concatenacion 
+         sc.nextLine();//Se agrega porque cuando pones sc.nextline se salta el sujeto 
+
+         System.out.println ("Formacion de oraciones forma: Sujeto, verbo, predicado"); 
+         System.out.println ("Escriba el sujeto de la oracion"); 
+         String sujeto= sc.nextLine();
+         System.out.println ("Ingrese el verbo"); 
+         String verbo= sc.nextLine();
+         System.out.println("Ingrese el predicado");
+         String predicado= sc.nextLine(); 
+         
+         System.out.println("La oracion es: "+sujeto+" "+verbo+" " +predicado);
+
+        // case 10: //Operadores nivel a bits 
+        
+
+         case 11:
+         // salir
+         System.out.println("Hasta luego");
+            break;
+
+         default:
+         // ninguno de los anteriores
+         System.out.println("Su seleccion no es correcta");
+         break;
         }
 
         sc.close();
