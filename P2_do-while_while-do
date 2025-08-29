@@ -1,1 +1,52 @@
+import java.util.Scanner;
 
+public class DecimalABinarioWhileDo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Ingresa un número decimal: ");
+        int numero = sc.nextInt();
+
+        String binario = "";
+        int n = numero;
+
+        // while-do → primero revisa la condición, luego ejecuta
+        while (n > 0) {
+            int residuo = n % 2;
+            binario = residuo + binario;
+            n = n / 2;
+        }
+
+        // Si el usuario ingresa 0, el binario quedaría vacío
+        if (binario.equals("")) {
+            binario = "0";  // corregimos el error
+        }
+
+        System.out.println("El número " + numero + " en binario es: " + binario);
+    }
+}
+import java.util.Scanner;
+
+public class DecimalABinarioDoWhile {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Ingresa un número decimal: ");
+        int numero = sc.nextInt();
+
+        String binario = "";
+        int n = numero;
+
+        // do-while → se ejecuta al menos una vez
+        do {
+            int residuo = n % 2;
+            binario = residuo + binario;
+            n = n / 2;
+        } while (n > 0);
+
+        System.out.println("El número " + numero + " en binario es: " + binario);
+    }
+}
+
+//el que falla es el while do, porque si el chango pone 0 nunca se ejecuta, y no se puede arreglar con mayor o igual porque entra en un bucle infinito
+se arregla poniendole un if//
