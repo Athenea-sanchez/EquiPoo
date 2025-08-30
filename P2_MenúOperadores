@@ -1,222 +1,280 @@
 import java.util.Scanner;
 
-public class Menu {
+public class MenuOperadores {
+    
+    // Función para imprimir decimal y binario 
+    // La usamos en case 10 para que sea visible el procedimiento
+    public static void mostrarResultado(String operacion, int valor) {
+    System.out.println(operacion + ": " + valor + " (binario " + Integer.toBinaryString(valor) + ")");
+    }
+    
     public static void main(String[] args) {
-        // Variables
-        float a, b; // Variables para operadores aritmeticos
-        char palabra; // Variable que se ocupara para operador de asignacion
-        float c; // Variable para operador unario
-        int opcion;
         Scanner sc = new Scanner(System.in);
-
-        System.out.println("Elige la opcion del operador a ocupar");
-        System.out.println("1.- Operadores aritmeticos");
-        System.out.println("2.- Operadores de asignación");
-        System.out.println("3.- Operadores unarios");
-        System.out.println("4.- Operador instanceof");
-        System.out.println("5.- Operador Condicional");
-        System.out.println("6.- Operadores incrementales");
-        System.out.println("7.- Operadores relacionales");
-        System.out.println("8.- Operadores logicos");
-        System.out.println("9.- Operadores de concatenación de cadena de caracteres");
-        System.out.println("10.- Operadores a nivel bits");
-        System.out.println("11.- Salir");
-        opcion = sc.nextInt();
-
-        switch (opcion) {
-            case 1:
-                System.out.println("Elija la operacion que desea realizar");
-                int ari;
-                System.out.println("1. Suma");
-                System.out.println("2. Resta");
-                System.out.println("3. Multiplicación");
-                System.out.println("4. Division");
-                System.out.println("5. Resto de la división (Modulo)");
-                System.out.println("6. Salir");
-                ari = sc.nextInt();
-
-                switch (ari) {
-                    case 1: // Case para suma
-                        System.out.println("Inserte el primer numero para realizar la operacion");
-                        a = sc.nextFloat();
-                        System.out.println("Inserte el segundo numero para realizar la operacion");
-                        b = sc.nextFloat();
-                        float suma;
-                        suma = a + b;
-                        System.out.println("El resultado de la suma es : " + suma);
-                        break;
-
-                    case 2: // case para resta
-                        System.out.println("Inserte el primer numero para realizar la operacion");
-                        a = sc.nextFloat();
-                        System.out.println("Inserte el segundo numero para realizar la operacion");
-                        b = sc.nextFloat();
-                        float resta;
-                        resta = a - b;
-                        System.out.println("El resultado de la resta es : " + resta);
-                        break;
-
-                    case 3: // case para multiplicacion
-                        System.out.println("Inserte el primer numero para realizar la operacion");
-                        a = sc.nextFloat();
-                        System.out.println("Inserte el segundo numero para realizar la operacion");
-                        b = sc.nextFloat();
-                        float multi;
-                        multi = a * b;
-                        System.out.println("El resultado de la multiplicacion es : " + multi);
-                        break;
-
-                    case 4: // case para division
-                        System.out.println("Inserte el primer numero para realizar la operacion");
-                        a = sc.nextFloat();
-                        System.out.println("Inserte el segundo numero para realizar la operacion");
-                        b = sc.nextFloat();
-                        float div;
-                        div = a / b;
-                        System.out.println("El resultado de la division es : " + div);
-                        break;
-
-                    case 5: // case para modulo
-                        System.out.println("Inserte el primer numero para realizar la operacion");
-                        a = sc.nextFloat();
-                        System.out.println("Inserte el segundo numero para realizar la operacion");
-                        b = sc.nextFloat();
-                        float mod;
-                        mod = a % b;
-                        System.out.println("El resultado del modulo es : " + mod);
-                        break;
-
-                    case 6:
-                        // salir
-                        System.out.println("Saliendo");
-                        break;
-
-                    default:
-                        // ninguno de los anteriores
-                        System.out.println("Su seleccion no es correcta");
-                        break;
-                }
-                break;
-
-            case 2:
-                System.out.println("Nombre de la variable a la que quiere asignarle un valor");
-                char variable;
-                variable = sc.next().charAt(0);
-                System.out.println("Valor numerico a asignar: ");
-                float contenido;
-                contenido = sc.nextFloat();
-                System.out.println("Se ha asignado exitosamente el valor de: " + contenido + " a la variable: " + variable);
-                System.out.println(variable + " = " + contenido);
-                break;
-
-            case 3:
-                System.out.println("Numero a asignar signo");
-                c = sc.nextFloat();
-                System.out.println("Negativo (N) o Positivo (P)?");
-                char signo;
-                signo = sc.next().charAt(0);
-                if (signo == 'P') {
-                    c = +c;
-                    System.out.println("Tu numero con signo es:" + c);
-                } else if (signo == 'N') {
-                    c = -c;
-                    System.out.println("Tu numero con signo es:" + c);
-                } else {
-                    System.out.println("Ingrese una opcion valida");
-                }
-                break;
-
-           // case 4://Operador instance of 
-
-
-              
-           // case 5 : //Operadores condicionales 
-
-            //case 6: //Operadores incrementales 
-
-
-            case 7: // Operadores relacionales
-          System.out.println("Ingrese el primer número:");
-          float num1 = sc.nextFloat();
-          System.out.println("Ingrese el segundo número:");
-          float num2 = sc.nextFloat();
-    
-          System.out.println("\nLa relacion de loss numeros es ");
-          System.out.println("Números ingresados: " + num1 + " y " + num2);
-          System.out.println("--------------------------------");
-    
-          // Mayor que
-         System.out.println(num1 + " > " + num2 + " : " + (num1 > num2));
-         
-         // Mayor o igual que
-          System.out.println(num1 + " >= " + num2 + " : " + (num1 >= num2));
-    
-         // Menor que
-         System.out.println(num1 + " < " + num2 + " : " + (num1 < num2));
-    
-          // Menor o igual que
-          System.out.println(num1 + " <= " + num2 + " : " + (num1 <= num2));
-    
-         // Igual que
-         System.out.println(num1 + " == " + num2 + " : " + (num1 == num2));
-    
-           // Diferente que
-           System.out.println(num1 + " != " + num2 + " : " + (num1 != num2));
-    
-          break;
-
+        int opcion;
         
-         case 8: // Operadores lógicos
-         System.out.println("Ingrese el primer valor booleano (true/false):");
-         boolean bool1 = sc.nextBoolean();
-         System.out.println("Ingrese el segundo valor booleano (true/false):");
-         boolean bool2 = sc.nextBoolean();
-         System.out.println("Valores ingresados: " + bool1 + " y " + bool2);
-         System.out.println("Aplicando operadores");
-    
-           // AND lógico (&&)
-          System.out.println(bool1 + " && " + bool2 + " : " + (bool1 && bool2));
-    
-         // OR lógico (||)
-          System.out.println(bool1 + " || " + bool2 + " : " + (bool1 || bool2));
-    
-         // NOT lógico (!)
-           System.out.println("!" + bool1 + " : " + (!bool1));
-         System.out.println("!" + bool2 + " : " + (!bool2));
-    
-         // XOR lógico (^) - OR exclusivo
-          System.out.println(bool1 + " ^ " + bool2 + " : " + (bool1 ^ bool2));
-    
-          break;
-
-
-         case 9: //Operadores concatenacion 
-         sc.nextLine();//Se agrega porque cuando pones sc.nextline se salta el sujeto 
-
-         System.out.println ("Formacion de oraciones forma: Sujeto, verbo, predicado"); 
-         System.out.println ("Escriba el sujeto de la oracion"); 
-         String sujeto= sc.nextLine();
-         System.out.println ("Ingrese el verbo"); 
-         String verbo= sc.nextLine();
-         System.out.println("Ingrese el predicado");
-         String predicado= sc.nextLine(); 
-         
-         System.out.println("La oracion es: "+sujeto+" "+verbo+" " +predicado);
-
-        // case 10: //Operadores nivel a bits 
+        do {
+            System.out.println("\n--- MENÚ DE OPERADORES ---");
+            System.out.println("1.- Operadores aritméticos");
+            System.out.println("2.- Operadores de asignación");
+            System.out.println("3.- Operadores unarios");
+            System.out.println("4.- Operador instanceof");
+            System.out.println("5.- Operador condicional (ternario)");
+            System.out.println("6.- Operadores incrementales");
+            System.out.println("7.- Operadores relacionales");
+            System.out.println("8.- Operadores lógicos");
+            System.out.println("9.- Operadores de concatenación de cadenas");
+            System.out.println("10.- Operadores a nivel de bits");
+            System.out.println("11.- Salir");
+            System.out.print("\nElige una opción: ");
+            opcion = sc.nextInt();
+            
+            switch (opcion) {
+                case 1: // Aritméticos
+                    System.out.println("\n"); 
+                    
+                    // Pedir valores de a y b
+                    int a, b;
+                    System.out.print("Dame un valor para a: ");
+                    a = sc.nextInt();
+                    System.out.print("Dame un valor para b: ");
+                    b = sc.nextInt();
+                    
+                    // Realizar operaciones
+                    System.out.println("Suma: " + a + " + " + b + " = " + (a + b));
+                    System.out.println("Resta: " + a + " - " + b + " = "  + (a - b));
+                    System.out.println("Multiplicación: " + a + " * " + b + " = "  + (a * b));
+                    System.out.println("División: " + a + " / " + b + " = "  + (a / b));
+                    System.out.println("Módulo: " + a + " % " + b + " = "  + (a % b));
+                    
+                    System.out.println("\n");
+                    break;
+                    
+                case 2: // Asignación
+                    System.out.println("\n");
+                    
+                    // Pedir un valor inicial
+                    int x;
+                    System.out.print("Dame un valor inicial: ");
+                    x = sc.nextInt();
+                    
+                    // Hacer las operaciones
+                    // Se hacen de forma continua (al resultado le aplicamos la nueva operación)
+                    System.out.println("x es igual a: " + x);
+                    x += 3;
+                    System.out.println(" x += 3 -> " + x);
+                    System.out.println("\nx ahora es igual a " + x);
+                    x -= 2;
+                    System.out.println(" x -= 2 -> " + x);
+                    System.out.println("\nx ahora es igual a " + x);
+                    x *= 4;
+                    System.out.println(" x *= 4 -> " + x);
+                    System.out.println("\nx ahora es igual a " + x);
+                    x /= 3;
+                    System.out.println(" x /= 3 -> " + x);
+                    System.out.println("\nx ahora es igual a " + x);
+                    x %= 5;
+                    System.out.println(" x %= 5 -> " + x);
+                    System.out.println("\nEl valor final de x es " + x);
+                    
+                    System.out.println("\n");
+                    break;
+                    
+                case 3: // Unarios
+                    System.out.println("\n");
+                    
+                    int c;
+                    System.out.print("Dame un número: ");
+                    c = sc.nextInt();
+                    System.out.println("Unario positivo: " + (+c));
+                    System.out.println("Unario negativo: " + (-c));
+                    
+                    System.out.println("\n");
+                    break;
+                    
+                case 4: // Instanceof
+                    System.out.println("\n");
+                    
+                    // Creamos un objeto de ejemplo
+                    String texto = "Hola profe :)";
+                    
+                    // Veriericamos si un objeto pertenece a una clase
+                    System.out.println("¿El objeto 'texto' es una instancia de String? " + (texto instanceof String));
+                    System.out.println("¿El objeto 'texto' es una instancia de Object? " + (texto instanceof Object));
+                    
+                    System.out.println("\n");
+                    break;
+                    
+                case 5: // Condicional ternario
+                    System.out.println("\n");
+                    
+                    // Pedir un número
+                    int n;
+                    System.out.print("Dame un número: ");
+                    n = sc.nextInt();
+                    
+                    // Usamos el operador ternario
+                    String resultado = (n % 2 == 0) ? "PAR" : "IMPAR";
+                    
+                    System.out.println("Evaluamos si el número es par o impar:");
+                    System.out.println("Resultado: " + resultado);
+                    
+                    System.out.println("\n");
+                    break;
+                    
+                case 6: // Incrementales
+                    System.out.println("\n");
+                    
+                    // Pedir un valor inicial
+                    int num;
+                    System.out.print("Dame un valor inicial: ");
+                    num = sc.nextInt();
+                    
+                    // Hacer las operaciones
+                    // Se hacen de forma continua (al resultado le aplicamos la nueva operación)
+                    System.out.println("num es igual a: " + num);
+                    num++;
+                    System.out.println(" num++ = " + num);
+                    System.out.println("\nnum ahora es igual a " + num);
+                    num--;
+                    System.out.println(" num-- = " + num);
+                    System.out.println("\nEl valor final de num es " + num);
+                    
+                    System.out.println("\n");
+                    break;
+                    
+                case 7: // Relacionales
+                    System.out.println("\n");
+                    
+                    // Pedimos valores
+                    int num1, num2;
+                    System.out.println("Ingrese el primer número:");
+                    num1 = sc.nextInt();
+                    System.out.println("Ingrese el segundo número:");
+                    num2 = sc.nextInt();
+                    
+                    // Hacemos las relaciones
+                    System.out.println("\nLa relacion entre los números es: ");
+                    System.out.println(num1 + " > " + num2 + " : " + (num1 > num2));
+                    System.out.println(num1 + " >= " + num2 + " : " + (num1 >= num2));
+                    System.out.println(num1 + " < " + num2 + " : " + (num1 < num2));
+                    System.out.println(num1 + " <= " + num2 + " : " + (num1 <= num2));
+                    System.out.println(num1 + " == " + num2 + " : " + (num1 == num2));
+                    System.out.println(num1 + " != " + num2 + " : " + (num1 != num2));
+                    
+                    System.out.println("\n");
+                    break;
+                    
+                case 8: // Lógicos
+                    System.out.println("\n");
+                    
+                    // Usamos los peradores
+                    boolean bool1 = true, bool2 = false;
+                    System.out.println("El valor booleano 1 es: " + bool1 + " y el valor booleano 2 es: " + bool2);
+                    System.out.println(bool1 + " && " + bool2 + " : " + (bool1 && bool2));
+                    System.out.println(bool1 + " || " + bool2 + " : " + (bool1 || bool2));
+                    System.out.println(bool1 + " && " + bool2 + " : " + (bool1 && bool2));
+                    System.out.println("!" + bool1 + " : " + (!bool1));
+                    System.out.println(bool1 + " & " + bool2 + " : " + (bool1 & bool2));
+                    System.out.println(bool1 + " | " + bool2 + " : " + (bool1 | bool2));
+                    
+                    System.out.println("\n");
+                    break;
+                    
+                case 9: // Concatenación
+                    //Se agrega porque cuando pones sc.nextline se salta el sujeto
+                    sc.nextLine(); 
+                    
+                    // Pedimos los datos de la oración
+                    System.out.println("\n");
+                    System.out.println ("Haremos una oración con la estructura: Sujeto, verbo, predicado"); 
+                    System.out.println ("\nEscriba el sujeto de la oracion:"); 
+                    String sujeto= sc.nextLine();
+                    System.out.println ("\nIngrese el verbo:"); 
+                    String verbo= sc.nextLine();
+                    System.out.println("\nIngrese el predicado");
+                    String predicado= sc.nextLine(); 
+                    System.out.println(" \nLa oracion es: " + sujeto + " " + verbo + " " + predicado);
+                    
+                    System.out.println("\n");
+                    break;
+                    
+                case 10: // A nivel de bits
+                    int valor1 = 11;   // binario 1011
+                    int valor2 = 8;    // binario 1000
+                    System.out.println("Valores iniciales:");
+                    mostrarResultado("valor 1: ", valor1);
+                    mostrarResultado("valor 2: ", valor2);
+                    
+                    // Hace las operaciones
+                    // Operadores
+                    System.out.println("\n--- Operadores lógicos ---");
+                    
+                    System.out.println("\nAND: pone 1 si ambos bits son 1");
+                    mostrarResultado("AND (&)", (valor1 & valor2));
+                    
+                    System.out.println("\nOR: pone 1 si al menos un bit es 1");
+                    mostrarResultado("OR (|)", (valor1 | valor2));
+                    
+                    System.out.println("\nXOR: 1 si los bits son diferentes");
+                    mostrarResultado("XOR (^)", (valor1 ^ valor2));
+                    
+                    System.out.println("\nNOT: invierte todos los bits");
+                    mostrarResultado("NOT (~)", (~valor1));
+                    
+                    // Desplazamientos
+                    System.out.println("\n--- Desplazamientos ---");
+                    
+                    System.out.println("\nDesplaza a la izquierda");
+                    mostrarResultado("<< 1", (valor1 << 1));
+                    
+                    System.out.println("\nDesplaza a la derecha");
+                    mostrarResultado(">> 1", (valor1 >> 1));
+                    
+                    System.out.println("\nDesplaza a la derecha llenando con ceros");
+                    mostrarResultado(">>> 1", (valor1 >>> 1));
+                    
+                    // Asignaciones
+                    System.out.println("\n--- Asignaciones (operadores combinados) ---");
+                    
+                    valor1 &= valor2;
+                    System.out.println("\nEquivale a: guardar en valor1 el resultado de hacer AND con valor2");
+                    mostrarResultado("valor1 &= valor2", valor1);
+                    
+                    valor1 |= 8;
+                    System.out.println("\nEquivale a: guardar en valor1 el resultado de hacer OR con 8");
+                    mostrarResultado("valor1 |= 8", valor1);
+                    
+                    valor1 ^= 4;
+                    System.out.println("\nEquivale a: guardar en valor1 el resultado de hacer XOR con 4");
+                    mostrarResultado("valor1 ^= 4", valor1);
+                    
+                    valor1 <<= 1;
+                    System.out.println("\nEquivale a: mover los bits de valor1 una posición a la izquierda");
+                    mostrarResultado("valor1 <<= 1", valor1);
+                    
+                    valor1 >>= 1;
+                    System.out.println("\nEquivale a: mover los bits de valor1 una posición a la derecha (con signo)");
+                    mostrarResultado("valor1 >>= 1", valor1);
+                    
+                    valor1 >>>= 1;
+                    System.out.println("\nEquivale a: mover los bits de valor1 una posición a la derecha (llenando con ceros)");
+                    mostrarResultado("valor1 >>>= 1", valor1);
+                    break;
+                    
+                case 11: // Salir
+                    System.out.println("\n");
+                    System.out.println("Hasta luego :)");
+                    System.out.println("\n");
+                    continue;
+                    
+                default: // Otra opción
+                    System.out.println("\n");
+                    System.out.println("Su seleccion no es correcta :(");
+                    System.out.println("\n");
+                    continue;
+            }
+        } while (opcion != 11);
         
-
-         case 11:
-         // salir
-         System.out.println("Hasta luego");
-            break;
-
-         default:
-         // ninguno de los anteriores
-         System.out.println("Su seleccion no es correcta");
-         break;
-        }
-
         sc.close();
     }
 }
