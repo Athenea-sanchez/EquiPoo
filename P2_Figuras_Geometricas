@@ -1,47 +1,47 @@
-import java.util.Scanner;
-public class FigurasGeometricas {
+import java.util.Scanner; // IMPORTAMOS LA LIBRERÍA PARA PODER USAR EL SCANNER
+public class FigurasGeometricas { // DECLARAMOS LA CLASE PÚBLICA
 	public static void main(String[] args) {
-		float area;
-		int opcion;
-		final float PI = 3.14159f;
-		Scanner sc = new Scanner(System.in);
+		float area; // VARIABLE PARA EL ÁREA
+		int opcion; // VARIABLE PARA LA OPCIÓN DEL MENÚ
+		final float PI = 3.14159f; // CONSTANTE DE PI
+		Scanner sc = new Scanner(System.in); // CREA UN SCANNER
 		do {
-			System.out.println("Elige la opción:");
+			System.out.println("Elige la opción:"); // IMPRESIÓN DEL MENÚ DE OPCIONES
 			System.out.println("1.- Area del círculo");
 			System.out.println("2.- Area del triángulo");
 			System.out.println("3.- Area de cuadrado");
 			System.out.println("4.- Salir");
-			opcion = sc.nextInt();
+			opcion = sc.nextInt(); // LEE LA OPCIÓN SELECCIONADA
 			switch (opcion) {
-			case 1: 
+			case 1: // SI SELECCIONÓ 1
 				//circulo
 				System.out.println("Seleccionó el círculo");
-				float radio = 15;
-				area = PI * radio * radio;
-				break;
-			case 2:
+				float radio = 15; // ESTABLECE EL RADIO
+				area = PI * radio * radio; // CALCULA EL ÁREA
+				break; // TERMINA ESTE CASO
+			case 2: // SI SELECCIONÓ 2
 				//Triángulo
 				System.out.println("Seleccionó el triángulo");
-				float base = 8, altura = 5;
-				area = (base * altura ) / 2;
-				break;
-			case 3:
+				float base = 8, altura = 5; // DEFINNE BASE Y ALTURA
+				area = (base * altura ) / 2; // CALCULA EL ÁREA
+				break; // FIN DEL CASO
+			case 3: // SI SELECCIONÓ 3
 				//Cuadrado
 				System.out.println("Sleccionó el cuadrado");
-				float lado = 10; 
-				area = lado * lado;
-				break;
-			case 4: 
+				float lado = 10; // DETERMINA EL LADO
+				area = lado * lado; // CALCULA EL ÁREA
+				break; // CIERRE DE OPCIÓN
+			case 4: // SI SELECCIONÓ 4
 				//Salir 
-				System.out.println("Hasta luego");
-				continue;
-			default:
+				System.out.println("Hasta luego"); // MENSAJE DE DESPEDIDA
+				continue; // VUELVE AL INICIO DEL BUCLE
+			default: // SI PUSO CUALQUIER OTRO NÚMERO
 				//Ninguno de los anteriores
 				System.out.println("Su elección no es correcta");
-				continue;
+				continue; // REGRESA AL INICIO DEL BUCLE
 			}
-			System.out.println("El area es: " + area);
-		} while (opcion != 4);
-		sc.close();
+			System.out.println("El area es: " + area); // IMPRIME EL ÁREA
+		} while (opcion != 4); // VALIDA LA CONDICIÓN
+		sc.close(); // CIERRA EL SCANNER
 	}
 }
