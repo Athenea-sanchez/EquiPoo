@@ -1,1 +1,99 @@
+import java.util.Scanner;
 
+public class Tacos { //declaramos la clase taco, donde alamcenaremos todo lo que ordenan 
+	public static void main(String[] args) { //declaramos la clase publica 
+		Scanner sc = new Scanner(System.in);
+		int op;
+		int TotalTacos = 0; //contador para saber cuantos tacos se ordenan 
+		int precioTaco = 16; //precio fijo para obtener la cuenta
+
+		System.out.println("Bienvenido a la taquería güerito");
+
+		do {
+			System.out.println("¿Que va a necesitar?:");
+			System.out.println("1)Ordenar tacos ");
+			System.out.println("2)La cuenta");
+			System.out.println("3)Pagar y salir");
+			op = sc.nextInt();
+
+			switch (op) {
+			case 1:
+				System.out.println("¿Cuantos tacos va a querer joven?:");
+				int t = sc.nextInt();
+				TotalTacos += t; //sumamos a la cuenta los tacos que ordenan 
+				sc.nextLine(); //limpiar buffer 
+
+				String[] tacos = new String[t];
+				System.out.println("Tenemos de pastor, suadero, campechano y bisteck:");
+				
+				for (int i=0; i<t; i++) {
+					System.out.println("De que le pongo su taco " + (i+1) + " joven?: ");
+					tacos[i] = sc.nextLine();
+
+					System.out.println("¿Lo quiere con verdura?: 1)Si 2)No");
+					int v = sc.nextInt();
+
+					if(v == 1){
+						System.out.println("¿Va con salsa?: 1)Verde 2)Roja 3)Sin Salsa");
+						int s = sc.nextInt();
+
+						if(s == 1){
+							System.out.println("Su taco de " + (tacos[i]) + " va con salsa verde y verdura güerito.");
+						} else if (s == 2) {
+							System.out.println("Su taco de " + (tacos[i]) + " va con salsa roja y verdura güerito.");
+						} else {
+							System.out.println("Animese joven, no pica.Entonces va con verdura, sin salsa.");
+							System.out.println("\n");
+						}	
+					} else {
+						System.out.println("¿Va con salsa?: 1)Verde 2)Roja 3)Sin Salsa");
+						int s = sc.nextInt();
+
+						if(s == 1){
+							System.out.println("Su taco de" + (tacos[i]) + " va con salsa verde y verdura güerito.");
+						} else if (s == 2) {
+							System.out.println("Su taco de" + (tacos[i]) + "va con salsa roja y verdura güerito.");
+						} else {
+							System.out.println("Animese joven, no pica.Entonces va con verdura, sin salsa.");
+							System.out.println("\n");
+						}	
+					}
+					sc.nextLine(); //limpiar buffer
+				}
+				break;
+
+			case 2:
+				if(TotalTacos > 0) {
+					int total = TotalTacos * precioTaco;
+					System.out.println("Pidió "+ TotalTacos + " tacos.");
+					System.out.println("Cada taco cuesta $16.");
+					System.out.println("El total a pagar es: $"+ total);
+				} else {
+					System.out.println("Todavía no ordena nada joven");
+				}
+				break;
+
+			case 3:
+				if(TotalTacos > 0) {
+					int total = TotalTacos * precioTaco;
+					System.out.println("Su cuenta fue de: $" + total + ".");
+					System.out.println("¿Paga con efectivo o tarjeta?: 1)Efectivo 2)Tarjeta");
+					int pago = sc.nextInt();
+					if(pago == 1) {
+						System.out.println("Gracias por comprar güerito.");
+					} else {
+						System.out.println("Gracias por comprar güerito, le imprimo su recibo.");
+					}
+				} else {
+					System.out.println("Gracias por visitarnos, vuelva pronto!");
+				}
+				break;
+
+			default: 
+			System.out.println("Esa opción no está disponible güero, escoja otra.");
+			break;
+			}
+		
+		} while(op != 3); //Repetimos mientras la opción no sea 3
+	}
+}
