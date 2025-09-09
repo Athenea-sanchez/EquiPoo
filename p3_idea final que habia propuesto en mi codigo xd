@@ -1,3 +1,6 @@
+//wachen, este codigo junta las 3 colecciones y pegunta cual quieres ocupar, y cada coleccion tiene su funcion especifica
+//nomas seria probarlo hasta que truene alvvv, y ya arreglar esos detalles
+
 import java.util.*;
 
 // ==========================
