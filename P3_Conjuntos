@@ -1,0 +1,108 @@
+//Segun mi buen amigo el gpt, dejo espacio en (ejemploUnion) para poder agregar con las otras colecciones y no mueras en el intento
+//esto de forma como tipo estructuras, mi idea podria ser agregar, "de que forma quieres agregar un libro"
+//y ya el usuario diga, no q tal, y ya pase al menu agregar libro, eliminar libro, buscar libro, y asi 
+//esto para que sea mas facil unir las colecciones
+
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class BibliotecaConjuntos {
+    private Set<String> catalogo; // conjunto de libros únicos
+    private Scanner scanner;
+
+    public BibliotecaConjuntos() {
+        catalogo = new HashSet<>();
+        scanner = new Scanner(System.in);
+    }
+
+    // Menú interactivo
+    public void iniciar() {
+        int opcion;
+        do {
+            System.out.println("\n===== 📚 Biblioteca - Módulo de Catálogo (Conjuntos) =====");
+            System.out.println("1. Agregar libro");
+            System.out.println("2. Eliminar libro");
+            System.out.println("3. Buscar libro");
+            System.out.println("4. Mostrar catálogo");
+            System.out.println("5. Unir catálogo con otro (ejemplo)");
+            System.out.println("0. Salir");
+            System.out.print("Selecciona una opción: ");
+            opcion = scanner.nextInt();
+            scanner.nextLine(); // limpiar buffer
+
+            switch (opcion) {
+                case 1 -> agregarLibroInteractivo();
+                case 2 -> eliminarLibroInteractivo();
+                case 3 -> buscarLibroInteractivo();
+                case 4 -> mostrarCatalogo();
+                case 5 -> ejemploUnion();
+                case 0 -> System.out.println("👋 Saliendo del módulo de conjuntos...");
+                default -> System.out.println("⚠️ Opción inválida, intenta de nuevo.");
+            }
+        } while (opcion != 0);
+    }
+
+    // --- Funciones principales ---
+    private void agregarLibroInteractivo() {
+        System.out.print("👉 Ingresa el título del libro a agregar: ");
+        String titulo = scanner.nextLine();
+        if (catalogo.add(titulo)) {
+            System.out.println("✅ Libro agregado correctamente.");
+        } else {
+            System.out.println("⚠️ Ese libro ya existe en el catálogo.");
+        }
+    }
+
+    private void eliminarLibroInteractivo() {
+        System.out.print("👉 Ingresa el título del libro a eliminar: ");
+        String titulo = scanner.nextLine();
+        if (catalogo.remove(titulo)) {
+            System.out.println("✅ Libro eliminado correctamente.");
+        } else {
+            System.out.println("⚠️ Ese libro no está en el catálogo.");
+        }
+    }
+
+    private void buscarLibroInteractivo() {
+        System.out.print("👉 Ingresa el título del libro a buscar: ");
+        String titulo = scanner.nextLine();
+        if (catalogo.contains(titulo)) {
+            System.out.println("✅ El libro \"" + titulo + "\" está en el catálogo.");
+        } else {
+            System.out.println("❌ El libro \"" + titulo + "\" no está en el catálogo.");
+        }
+    }
+
+    private void mostrarCatalogo() {
+        if (catalogo.isEmpty()) {
+            System.out.println("📭 El catálogo está vacío.");
+        } else {
+            System.out.println("\n📚 Catálogo de la biblioteca:");
+            for (String libro : catalogo) {
+                System.out.println("- " + libro);
+            }
+        }
+    }
+
+    // --- Ejemplo de unión con otro conjunto ---
+    private void ejemploUnion() {
+        Set<String> otroCatalogo = new HashSet<>();
+        otroCatalogo.add("Harry Potter");
+        otroCatalogo.add("La Odisea");
+
+        Set<String> union = new HashSet<>(catalogo);
+        union.addAll(otroCatalogo);
+
+        System.out.println("\n📚 Catálogo unido con otra biblioteca:");
+        for (String libro : union) {
+            System.out.println("- " + libro);
+        }
+    }
+
+    // --- MAIN ---
+    public static void main(String[] args) {
+        BibliotecaConjuntos biblioteca = new BibliotecaConjuntos();
+        biblioteca.iniciar();
+    }
+}
