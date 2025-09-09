@@ -3,6 +3,8 @@
 //y ya el usuario diga, no q tal, y ya pase al menu agregar libro, eliminar libro, buscar libro, y asi 
 //esto para que sea mas facil unir las colecciones
 
+//mirar el ultimo codigo que agregue:)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) jijijijij
+
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
