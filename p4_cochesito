@@ -1,0 +1,46 @@
+import java.util.Scanner;
+public class Cochesito{
+	public string color;
+	public string marca;
+	public string modelo;
+    public int velocidad;
+    public boolean estaEncendido;
+    public static int movimiento = 3;
+
+    public Cochesito(string color, string marca, string modelo){
+    	this.color = color;
+    	this.marca = marca;
+    	this.modelo = modelo;
+    	this.velocidad = 0;
+    	this.estaEncendido = falso;
+    }
+
+    public boolean encender() {
+        this.estaEncendido = true; // Cambia el estado a encendido
+        return this.estaEncendido; // Devuelve true indicando que se encendió
+    }
+
+    public boolean apagar() {
+    	this.esta
+    }
+
+    // Método para verificar si el elemento está encendido
+    public boolean estaEncendido() {
+        return this.estaEncendido;
+    }
+    
+    public int acelerar(int movimiento);
+    	if
+    	return velocidad + movimiento;
+    }
+    public int frenar(int movimiento);{
+    	return velocidad - movimiento;
+    }
+
+
+    // Método para encender el elemento
+    
+
+	public static void main(String[] args){
+
+}
