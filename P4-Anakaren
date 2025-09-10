@@ -150,12 +150,20 @@ public class Main {
 					            			break;
 					            		case 2:
 					            			System.out.println("¿Quieres acelerar?");
-					            			break;
+					            			System.out.println("1. Si\n2.No");
+						            		case 1: 
+						            			coche1.acelerar();
+						            			break;
+						            		case 2:
+						            			System.out.println("El coche se apagará");
+						            			encendido = false;
+						            			break;
 					            	}
 					                else {
 					                System.out.println("El coche está apagado.");
 					            }
 					            break;
+					        
 					        default:
             					System.out.println("Opción no válida.");
                     			break;
