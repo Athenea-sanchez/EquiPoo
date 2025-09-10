@@ -1,1 +1,120 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+// Clase Libro (objeto que se guardará en la lista)
+class Libro {
+    private String titulo;
+    private String autor;
+    private int anio;
+
+    public Libro(String titulo, String autor, int anio) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.anio = anio;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    @Override
+    public String toString() {
+        return "Título: " + titulo + " | Autor: " + autor + " | Año: " + anio;
+    }
+}
+
+// Clase principal (gestor de la biblioteca)
+public class GestorBiblioteca {
+    private List<Libro> catalogo = new ArrayList<>();
+    private Scanner scanner = new Scanner(System.in);
+
+    public void iniciar() {
+        int opcion;
+        do {
+            System.out.println("\n--- GESTOR DE BIBLIOTECA ---");
+            System.out.println("1. Añadir libro");
+            System.out.println("2. Eliminar libro");
+            System.out.println("3. Buscar libro por título");
+            System.out.println("4. Mostrar catálogo");
+            System.out.println("5. Salir");
+            System.out.print("Elige una opción: ");
+            opcion = scanner.nextInt();
+            scanner.nextLine(); // limpiar buffer
+
+            switch (opcion) {
+                case 1 -> anadirLibro();
+                case 2 -> eliminarLibro();
+                case 3 -> buscarLibro();
+                case 4 -> mostrarCatalogo();
+                case 5 -> System.out.println("Saliendo del programa...");
+                default -> System.out.println("Opción no válida, intenta otra vez.");
+            }
+        } while (opcion != 5);
+    }
+
+    // Método para añadir un libro
+    private void anadirLibro() {
+        System.out.print("Título: ");
+        String titulo = scanner.nextLine();
+        System.out.print("Autor: ");
+        String autor = scanner.nextLine();
+        System.out.print("Año de publicación: ");
+        int anio = scanner.nextInt();
+        scanner.nextLine(); // limpiar buffer
+
+        catalogo.add(new Libro(titulo, autor, anio));
+        System.out.println("✅ Libro añadido al catálogo.");
+    }
+
+    // Método para eliminar un libro por título
+    private void eliminarLibro() {
+        System.out.print("Introduce el título del libro a eliminar: ");
+        String titulo = scanner.nextLine();
+
+        boolean eliminado = catalogo.removeIf(libro -> libro.getTitulo().equalsIgnoreCase(titulo));
+
+        if (eliminado) {
+            System.out.println("✅ Libro eliminado.");
+        } else {
+            System.out.println("⚠️ No se encontró el libro en el catálogo.");
+        }
+    }
+
+    // Método para buscar un libro por título
+    private void buscarLibro() {
+        System.out.print("Introduce el título a buscar: ");
+        String titulo = scanner.nextLine();
+
+        boolean encontrado = false;
+        for (Libro libro : catalogo) {
+            if (libro.getTitulo().equalsIgnoreCase(titulo)) {
+                System.out.println("📖 " + libro);
+                encontrado = true;
+            }
+        }
+
+        if (!encontrado) {
+            System.out.println("⚠️ No se encontró el libro.");
+        }
+    }
+
+    // Mostrar todos los libros
+    private void mostrarCatalogo() {
+        if (catalogo.isEmpty()) {
+            System.out.println("El catálogo está vacío.");
+        } else {
+            System.out.println("\n--- CATÁLOGO DE LIBROS ---");
+            for (Libro libro : catalogo) {
+                System.out.println(libro);
+            }
+        }
+    }
+
+    // Método main
+    public static void main(String[] args) {
+        GestorBiblioteca gestor = new GestorBiblioteca();
+        gestor.iniciar();
+    }
+}
 
