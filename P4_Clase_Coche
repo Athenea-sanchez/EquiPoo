@@ -1,0 +1,97 @@
+import java.util.Scanner;
+
+public class Coche3 {
+		String color;
+		String marca;
+		String modelo;
+		int velocidad;
+		final movimiento = 3;
+
+		//Creamos el constructor:
+		public Coche3 (String color, String marca, String modelo, int velocidad) {
+			this.color = color;
+			this.marca = marca;
+			this.modelo = modelo;
+			this.velocidad = 0; 
+		}
+
+		//Creamos los métodos de la clase 
+		pubic void acelerar(int velAumento) {
+			this.velocidad = this.velocidad + movimiento;
+			System.out.println("El coche aumentó su velocidad a " + this.velocidad + "km/h.\n");
+		}
+
+		public void frenar (int velDecremento) {
+			this.velocidad = this.velocidad - movimiento;
+			if (this.velocidad < 0) {
+				this.velocidad = 0;
+				System.out.println("El coche se ha frenado por completo.\n");
+			}
+			System.out.println("El coche redujo su velocidad a " + this.velocidad + " km/h.");
+		}
+
+		public void encender( boolean encendido) {
+			if (encendido == true) {
+			System.out.prinln("El coche está encendido...\n");
+			}
+		}
+
+		public void descripcion() {
+			System.out.prinln("Este automovil es un \n" + this.modelo + " \nde la marca" + this.marca + "\n color");
+		}
+
+		public static void main (String [] args) {
+			Scanner sc = new Scanner(System.in);
+			boolean confirmar;
+			int op;
+
+			//Datos del objeto 1:
+			System.out.println("Ingrese el modelo del coche 1:");
+			String modelo1 = sc.nextLine();
+
+			System.out.println("Ingrese la marca del coche 1:");
+			String marca1 = sc.nextLine();
+
+			System.out.println("Ingrese el color del coche 1:");
+			String color1 = sc.nextLine();
+
+			//Datos objeto 2
+			System.out.println("Ingrese el modelo del coche 2:");
+			String modelo2 = sc.nextLine();
+
+			System.out.println("Ingrese la marca del coche 2:");
+			String marca2 = sc.nextLine();
+
+			System.out.println("Ingrese el color del coche 2:");
+			String color2 = sc.nextLine();
+
+			//Datos objeto 3
+			System.out.println("Ingrese el modelo del coche 3:");
+			String modelo3 = sc.nextLine();
+
+			System.out.println("Ingrese la marca del coche 3:");
+			String marca3 = sc.nextLine();
+
+			System.out.println("Ingrese el color del coche 3:");
+			String color3 = sc.nextLine();
+
+			//Creamos los objetos:
+			Coche3 coche1 = new Coche3 (modelo1, marca1, color1);
+			Coche3 coche2 = new Coche3 (modelo2, marca2, color2);
+			Coche3 coche3 = new Coche3 (modelo3, marca3, color3);
+
+			System.out.println("¿Qué auto desea usar?");
+			op = sc.nextInt();
+
+			do {
+				 switch (op) {
+				 case 1: 
+				 }
+			}
+				
+			
+		}
+}
+System.out.prinln("¿Desea encender su automovil? (true/false)\t");
+			confirmar = sc.nextBoolean();
+ 
