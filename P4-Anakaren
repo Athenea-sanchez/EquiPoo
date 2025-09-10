@@ -114,8 +114,22 @@ public class Main {
 
 					    switch(opAccion) {
 					        case 1:
-					            coche1.encender();
+					            boolean encendido = coche1.encender();
+					            if (encendido == false){
+					            	System.out.println("\n¿Quieres encender el coche?");
+					            	System.out.println("1. Si\n2.No");
+					            	int opEncendido = sc.nextInt();
+					            	switch(opEncendido){
+					            		case 1: 
+					            			encendido = true;
+					            			break;
+					            		case 2:
+					            			System.out.println("El coche está apagado");
+					            			break;
+					            	}
+					            }
 					            break;
+					        
 					        case 2:
 					            if (coche1.encendido){
 					        		coche1.acelerar();
@@ -124,17 +138,21 @@ public class Main {
 					            	System.out.println("Primero debes encender el coche.");
 					            }
 					            break;
+					        
 					        case 3:
 					            if (coche1.encendido) {
 					                coche1.frenar();
 					                if (coche1.velocidad <= 0) {
-					                    System.out.println("El coche ya está detenido. ¿Quieres apagarlo? (s/n)");
-					                    char resp = sc.next().charAt(0);
-					                    if (resp == 's' || resp == 'S') {
-					                        coche.apagar();
-					                    }
-					                }
-					            } else {
+					                    System.out.println("El coche ya está detenido. ¿Quieres apagarlo?");
+					                    System.out.println("1. Si\n2.No");
+					            		case 1: 
+					            			encendido = false;
+					            			break;
+					            		case 2:
+					            			System.out.println("¿Quieres acelerar?");
+					            			break;
+					            	}
+					                else {
 					                System.out.println("El coche está apagado.");
 					            }
 					            break;
