@@ -6,7 +6,6 @@ public class Coche{
 	static final int movimiento = 3;
 
 	// Variables
-	int velocidad = 0;
 	boolean encendido = false;
 
 	// Argumentos
@@ -20,7 +19,7 @@ public class Coche{
 		this.color = color;
 		this.marca = marca;
 		this.modelo = modelo;
-		this.velocidad = velocidad;
+		this.velocidad = 0;
 	}
 
 	// Métodos
@@ -104,51 +103,45 @@ public class Main {
             
             switch (op){
                 case 1:
-int opcionAccion;
-do {
-    System.out.println("\n¿Qué deseas hacer con este coche?");
-    System.out.println("1. Encender");
-    System.out.println("2. Acelerar");
-    System.out.println("3. Frenar");
-    System.out.println("4. Apagar");
-    System.out.println("5. Cambiar de coche");
+					int opAccion;
+					do {
+					    System.out.println("\n¿Qué deseas hacer con este coche?");
+					    System.out.println("1. Encender");
+					    System.out.println("2. Acelerar");
+					    System.out.println("3. Frenar");
 
-    opcionAccion = sc.nextInt();
+					    opAccion = sc.nextInt();
 
-    switch(opcionAccion) {
-        case 1:
-            coche.encender();
-            break;
-        case 2:
-            if (coche.encendido) coche.acelerar();
-            else System.out.println("Primero debes encender el coche.");
-            break;
-        case 3:
-            if (coche.encendido) {
-                coche.frenar();
-                if (coche.velocidad <= 0) {
-                    System.out.println("El coche ya está detenido. ¿Quieres apagarlo? (s/n)");
-                    char resp = sc.next().charAt(0);
-                    if (resp == 's' || resp == 'S') {
-                        coche.apagar();
-                    }
-                }
-            } else {
-                System.out.println("El coche está apagado.");
-            }
-            break;
-        case 4:
-            coche.apagar();
-            break;
-        case 5:
-            System.out.println("Cambiando de coche...");
-            break;
-        default:
-            System.out.println("Opción no válida.");
-    }
-} while (opcionAccion != 5);
-                    break;
-                    
+					    switch(opAccion) {
+					        case 1:
+					            coche1.encender();
+					            break;
+					        case 2:
+					            if (coche1.encendido){
+					        		coche1.acelerar();
+					        	}
+					            else {
+					            	System.out.println("Primero debes encender el coche.");
+					            }
+					            break;
+					        case 3:
+					            if (coche1.encendido) {
+					                coche1.frenar();
+					                if (coche1.velocidad <= 0) {
+					                    System.out.println("El coche ya está detenido. ¿Quieres apagarlo? (s/n)");
+					                    char resp = sc.next().charAt(0);
+					                    if (resp == 's' || resp == 'S') {
+					                        coche.apagar();
+					                    }
+					                }
+					            } else {
+					                System.out.println("El coche está apagado.");
+					            }
+					            break;
+					        default:
+            					System.out.println("Opción no válida.");
+                    			break;
+
                 case 2:
                     
                     break;
