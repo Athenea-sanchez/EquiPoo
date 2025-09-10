@@ -6,7 +6,7 @@ public class Coche3 {
 		String marca;
 		String modelo;
 		int velocidad;
-		final IMT movimiento = 3;
+		final int movimiento = 3;
 
 		//Creamos el constructor:
 		public Coche3 (String color, String marca, String modelo, int velocidad) {
