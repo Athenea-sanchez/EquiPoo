@@ -1,0 +1,106 @@
+import java.util.Scanner;
+
+public class coche{
+    //atributos 
+
+    public String color; 
+    public String marca; 
+    public String modelo; 
+    public float velocidad; 
+    public boolean encendido; 
+    Scanner sc= new Scanner (System.in); //Escaner
+
+
+  //Constante 
+    public static final movimiento=3; 
+
+
+
+
+    //constructor 
+    public coche(String color, String marca, String modelo, float velocidad){
+
+    this.color=color; 
+    this.marca=marca; 
+    this.modelo=modelo; 
+    this.velocidad=0; 
+    this.encendido= true; 
+
+    }
+
+    // metodos 
+   
+   public void acelerar (){
+    coche.velocidad +=movimiento; 
+   } 
+    
+    //Frenar 
+
+
+  public void frenar (){
+     coche.velocidad -=movimiento; 
+  }
+
+
+   public void apagar(){
+    coche.encendido= false; 
+   }
+   
+
+   //Main 
+public static void main (String []args ){
+
+
+    //Acelerar 
+
+    System.out.println ("tu velocidad actual es de: "+coche.velocidad +"Deseas acelerar?: (Si:1/no:2)");
+    int opcion; 
+    opcion= sc.nextLine(); 
+
+    if (opcion==1){
+    coche.acelerar(); 
+
+    System.out.println ("tu velocidad ahora es de: "+ coche.velocidad);
+
+    } else if ( opcion ==2){
+        System.out.println ("Su velocidad no a cambiado");
+    } else{
+        System.out.println("Ingrese un valor valido"); 
+    }
+
+   //frenar 
+
+    System.out.println ("tu velocidad actual es de: "+coche.velocidad +"Deseas frenar?: (Si:1/no:2)");
+    int opcion1; 
+    opcion1= sc.nextLine(); 
+
+    if (opcion1==1 && coche.velocidad>0){
+    coche.frenar(); 
+    System.out.println ("tu velocidad ahora es de: "+ coche.velocidad);
+
+    } else if (opcion1==1 && coche.velocidad<0){
+     coche.encender();
+
+     }
+
+    } else if ( opcion1 ==2){ public static void main 
+        System.out.println ("Su velocidad no a cambiado");
+    } else{
+        System.out.println("Ingrese un valor valido"); 
+    }
+
+
+   //Apagar 
+
+   int opcion2; 
+   System.out.println("El coche esta enciendido, deseas apagarlo?: Si(1)/NO(2)"); 
+   opcion2= sc.nextLine();
+   if (opcion2==1){
+    coche.apagar();
+    System.out.println ("El coche esta apagado");
+   }else if (opcion2==2){
+    System.out.println("El coche sigue prendido");
+   }else{
+    System.out.println("Ingrese un valor valido"); 
+   }
+}
