@@ -1,0 +1,130 @@
+import java.util.Scanner;
+
+public class Coche{
+
+	// Constantes
+	static final float movimiento = 3;
+
+	// Variables
+	float velocidad = 0;
+	boolean encendido = false;
+
+	// Argumentos
+	public String color;
+	public String marca;
+	public String modelo;
+	public float velocidad;
+
+	// Constructor
+	public Coche(String color, String marca, String modelo, float velocidad){
+		this.color = color;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.velocidad = velocidad;
+	}
+
+	// Métodos
+	public void acelerar(){
+		velocidad += movimiento;
+		System.out.println("Vas a " + velocidad + " km/h");
+	}
+
+	public void frenar(){
+		velocidad -= movimiento;
+		System.out.println("Vas a " + velocidad + " km/h");
+	}
+
+	public boolean encender(){
+		if (encendido == true){
+			System.out.println("El coche está encendido");
+			return true;
+		}
+		else{
+			System.out.println("El coche está apagado");
+			return false;
+		}
+	}
+}
+
+public class Main {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+
+        // Variables para crear coche
+        String color;
+		String marca;
+		String modelo;
+
+		// Crear coches
+		// Coche 1
+        System.out.println("Vamos a crear el coche 1:");
+        System.out.println("Dame un color");
+        color = sc.nextLine();
+        System.out.println("Dame una marca");
+        marca = sc.nextLine();
+        System.out.println("Dame un modelo");
+        modelo = sc.nextLine();
+
+        Coche coche1 = new Coche(color, marca, modelo, 0);
+
+        // Coche 2
+        System.out.println("Vamos a crear el coche 2:");
+        System.out.println("Dame un color");
+        color = sc.nextLine();
+        System.out.println("Dame una marca");
+        marca = sc.nextLine();
+        System.out.println("Dame un modelo");
+        modelo = sc.nextLine();
+        
+        Coche coche2 = new Closet(color, marca, modelo, 0);
+
+        // Coche 3
+        System.out.println("Vamos a crear el coche 3:");
+        System.out.println("Dame un color");
+        color = sc.nextLine();
+        System.out.println("Dame una marca");
+        marca = sc.nextLine();
+        System.out.println("Dame un modelo");
+        modelo = sc.nextLine();
+        
+        Coche coche3 = new Closet(color, marca, modelo, 0);
+
+
+        // Menú de opciones
+        int op;
+        do{
+            System.out.println("\n¿Qué coche quieres usar?");
+            System.out.println("1. Coche 1");
+            System.out.println("2. Coche 2");
+            System.out.println("3. Coche 3");
+            System.out.println("4. Salir");
+            
+            System.out.print("\nSeleccione una opción: ");
+            op = sc.nextInt();
+            
+            switch (op){
+                case 1:
+
+                    break;
+                    
+                case 2:
+                    
+                    break;
+                    
+                case 3:
+                    
+                    break;
+                    
+                case 4:
+                    System.out.println("\nAdiós... :)");
+                    break;
+                    
+                default:
+                    System.out.println("\nOpción no válida");
+                continue;
+            }
+        } while (op != 4);
+        
+        sc.close();
+    }
+}
