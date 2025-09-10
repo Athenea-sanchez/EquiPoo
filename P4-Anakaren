@@ -3,20 +3,20 @@ import java.util.Scanner;
 public class Coche{
 
 	// Constantes
-	static final float movimiento = 3;
+	static final int movimiento = 3;
 
 	// Variables
-	float velocidad = 0;
+	int velocidad = 0;
 	boolean encendido = false;
 
 	// Argumentos
 	public String color;
 	public String marca;
 	public String modelo;
-	public float velocidad;
+	public int velocidad;
 
 	// Constructor
-	public Coche(String color, String marca, String modelo, float velocidad){
+	public Coche(String color, String marca, String modelo, int velocidad){
 		this.color = color;
 		this.marca = marca;
 		this.modelo = modelo;
@@ -76,7 +76,7 @@ public class Main {
         System.out.println("Dame un modelo");
         modelo = sc.nextLine();
         
-        Coche coche2 = new Closet(color, marca, modelo, 0);
+        Coche coche2 = new Coche(color, marca, modelo, 0);
 
         // Coche 3
         System.out.println("Vamos a crear el coche 3:");
@@ -87,7 +87,7 @@ public class Main {
         System.out.println("Dame un modelo");
         modelo = sc.nextLine();
         
-        Coche coche3 = new Closet(color, marca, modelo, 0);
+        Coche coche3 = new Coche(color, marca, modelo, 0);
 
 
         // Menú de opciones
