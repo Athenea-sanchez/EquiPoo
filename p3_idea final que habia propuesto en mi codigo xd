@@ -1,233 +1,266 @@
-//wachen, este codigo junta las 3 colecciones y pegunta cual quieres ocupar, y cada coleccion tiene su funcion especifica
-//nomas seria probarlo hasta que truene alvvv, y ya arreglar esos detalles
-
 import java.util.*;
 
-// ==========================
 // MÓDULO CONJUNTOS - CATÁLOGO DE LIBROS
-// ==========================
-class BibliotecaConjuntos {
-    private Set<String> catalogo = new HashSet<>();
-    private Scanner scanner = new Scanner(System.in);
 
+// Se usa un Set porque:
+// - No permite duplicados
+// - No importa el orden de los elementos
+class BibliotecaConjuntos {
+    private Set<String> catalogo = new HashSet<>(); // Guarda los títulos de los libros
+    private Scanner scanner;
+
+    // Constructor que recibe el scanner principal
+    public BibliotecaConjuntos(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    // Menú del módulo de catálogo
     public void iniciar() {
         int opcion;
         do {
-            System.out.println("\n===== 📚 Catálogo de Libros (Conjuntos) =====");
+            System.out.println("\n --- Catálogo de Libros (Conjuntos) --- ");
             System.out.println("1. Agregar libro");
             System.out.println("2. Eliminar libro");
             System.out.println("3. Buscar libro");
             System.out.println("4. Mostrar catálogo");
-            System.out.println("0. Volver al menú principal");
-            System.out.print("Selecciona una opción: ");
+            System.out.println("5. Volver al menú principal");
+            System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
-            scanner.nextLine();
-
+            scanner.nextLine(); // limpiar buffer
+            
             switch (opcion) {
-                case 1 -> agregarLibro();
-                case 2 -> eliminarLibro();
-                case 3 -> buscarLibro();
-                case 4 -> mostrarCatalogo();
-                case 0 -> System.out.println("🔙 Volviendo al menú principal...");
-                default -> System.out.println("⚠️ Opción inválida.");
+                case 1 -> agregarLibro();   // Agregar nuevo libro
+                case 2 -> eliminarLibro();  // Eliminar libro
+                case 3 -> buscarLibro();    // Buscar libro por título
+                case 4 -> mostrarCatalogo();// Mostrar todos los libros
+                case 5 -> System.out.println("Volviendo al menú principal...");
+                default -> System.out.println("Opción inválida.");
             }
-        } while (opcion != 0);
+        } while (opcion != 5);
     }
 
+    // Añadir libro al conjunto (si ya existe, no se duplica)
     private void agregarLibro() {
-        System.out.print("👉 Ingresa el título del libro: ");
+        System.out.print("Ingresa el título del libro: ");
         String titulo = scanner.nextLine();
         if (catalogo.add(titulo)) {
-            System.out.println("✅ Libro agregado.");
+            System.out.println("Libro agregado.");
         } else {
-            System.out.println("⚠️ Ese libro ya está en el catálogo.");
+            System.out.println("Ese libro ya está en el catálogo.");
         }
     }
 
+    // Eliminar libro del catálogo
     private void eliminarLibro() {
-        System.out.print("👉 Ingresa el título del libro a eliminar: ");
+        System.out.print("Ingresa el título del libro a eliminar: ");
         String titulo = scanner.nextLine();
         if (catalogo.remove(titulo)) {
-            System.out.println("✅ Libro eliminado.");
+            System.out.println("Libro eliminado.");
         } else {
-            System.out.println("⚠️ Ese libro no existe en el catálogo.");
+            System.out.println("Ese libro no existe en el catálogo.");
         }
     }
 
+    // Buscar libro dentro del catálogo
     private void buscarLibro() {
-        System.out.print("👉 Ingresa el título a buscar: ");
+        System.out.print("Ingresa el título a buscar: ");
         String titulo = scanner.nextLine();
         if (catalogo.contains(titulo)) {
-            System.out.println("✅ El libro está en el catálogo.");
+            System.out.println("El libro está en el catálogo.");
         } else {
-            System.out.println("❌ El libro no está en el catálogo.");
+            System.out.println("El libro no está en el catálogo.");
         }
     }
 
+    // Mostrar todos los libros en el catálogo
     public void mostrarCatalogo() {
         if (catalogo.isEmpty()) {
-            System.out.println("📭 El catálogo está vacío.");
+            System.out.println("El catálogo está vacío.");
         } else {
-            System.out.println("\n📚 Catálogo de libros:");
+            System.out.println("\nCatálogo de libros:");
             for (String libro : catalogo) {
                 System.out.println("- " + libro);
             }
         }
     }
 
-    // Método para que el módulo Mapas pueda consultar libros
+    // Método auxiliar para validar existencia de libro desde otros módulos
     public boolean existeLibro(String titulo) {
         return catalogo.contains(titulo);
     }
 }
 
 
-// ==========================
-// MÓDULO LISTAS - USUARIOS (PARA TU COMPAÑERO)
-// ==========================
+// MÓDULO LISTAS - USUARIOS
+
+// Se usa una List porque:
+// - Permite duplicados (aunque aquí no controlamos eso)
+// - Mantiene el orden de registro de los usuarios
 class BibliotecaListas {
     private List<String> usuarios = new ArrayList<>();
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
 
+    public BibliotecaListas(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    // Menú del módulo de usuarios
     public void iniciar() {
         int opcion;
         do {
-            System.out.println("\n===== 👥 Gestión de Usuarios (Listas) =====");
+            System.out.println("\n --- Gestión de Usuarios (Listas) ---");
             System.out.println("1. Registrar usuario");
             System.out.println("2. Eliminar usuario");
             System.out.println("3. Mostrar usuarios");
-            System.out.println("0. Volver al menú principal");
+            System.out.println("4. Volver al menú principal");
             System.out.print("Selecciona una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine();
-
+            
             switch (opcion) {
-                case 1 -> registrarUsuario();
-                case 2 -> eliminarUsuario();
-                case 3 -> mostrarUsuarios();
-                case 0 -> System.out.println("🔙 Volviendo al menú principal...");
-                default -> System.out.println("⚠️ Opción inválida.");
+                case 1 -> registrarUsuario(); // Registrar nuevo usuario
+                case 2 -> eliminarUsuario();  // Eliminar usuario existente
+                case 3 -> mostrarUsuarios();  // Mostrar lista de usuarios
+                case 4 -> System.out.println("Volviendo al menú principal...");
+                default -> System.out.println("Opción inválida.");
             }
-        } while (opcion != 0);
+        } while (opcion != 4);
     }
 
+    // Agregar un usuario a la lista
     private void registrarUsuario() {
-        System.out.print("👉 Ingresa el nombre del usuario: ");
+        System.out.print("Ingresa el nombre del usuario: ");
         String usuario = scanner.nextLine();
         usuarios.add(usuario);
-        System.out.println("✅ Usuario registrado.");
+        System.out.println("Usuario registrado.");
     }
 
+    // Eliminar usuario de la lista
     private void eliminarUsuario() {
-        System.out.print("👉 Ingresa el nombre del usuario a eliminar: ");
+        System.out.print("Ingresa el nombre del usuario a eliminar: ");
         String usuario = scanner.nextLine();
         if (usuarios.remove(usuario)) {
-            System.out.println("✅ Usuario eliminado.");
+            System.out.println("Usuario eliminado.");
         } else {
-            System.out.println("⚠️ Usuario no encontrado.");
+            System.out.println("Usuario no encontrado.");
         }
     }
 
+    // Mostrar lista de usuarios registrados
     private void mostrarUsuarios() {
         if (usuarios.isEmpty()) {
-            System.out.println("📭 No hay usuarios registrados.");
+            System.out.println("No hay usuarios registrados.");
         } else {
-            System.out.println("\n👥 Usuarios registrados:");
+            System.out.println("\nUsuarios registrados:");
             for (String u : usuarios) {
                 System.out.println("- " + u);
             }
         }
     }
 
-    // Método para el módulo Mapas
+    // Método auxiliar para validar existencia de usuario desde otros módulos
     public boolean existeUsuario(String usuario) {
         return usuarios.contains(usuario);
     }
 }
 
 
-// ==========================
-// MÓDULO MAPAS - PRÉSTAMOS (PARA TU COMPAÑERO)
-// ==========================
+// MÓDULO MAPAS - PRÉSTAMOS
+
+// Se usa un Map:
+// - Llave = Usuario
+// - Valor = Conjunto de libros prestados
 class BibliotecaMapas {
-    private Map<String, List<String>> prestamos = new HashMap<>();
-    private Scanner scanner = new Scanner(System.in);
+    private Map<String, Set<String>> prestamos = new HashMap<>();
+    private Scanner scanner;
     private BibliotecaListas usuarios;
     private BibliotecaConjuntos catalogo;
 
-    public BibliotecaMapas(BibliotecaListas usuarios, BibliotecaConjuntos catalogo) {
+    // Constructor recibe referencias a los otros módulos
+    public BibliotecaMapas(BibliotecaListas usuarios, BibliotecaConjuntos catalogo, Scanner scanner) {
         this.usuarios = usuarios;
         this.catalogo = catalogo;
+        this.scanner = scanner;
     }
 
+    // Menú del módulo de préstamos
     public void iniciar() {
         int opcion;
         do {
-            System.out.println("\n===== 📖 Gestión de Préstamos (Mapas) =====");
+            System.out.println("\n --- Gestión de Préstamos (Mapas) ---");
             System.out.println("1. Prestar libro a usuario");
             System.out.println("2. Devolver libro");
             System.out.println("3. Mostrar préstamos");
-            System.out.println("0. Volver al menú principal");
+            System.out.println("4. Volver al menú principal");
             System.out.print("Selecciona una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine();
-
+            
             switch (opcion) {
-                case 1 -> prestarLibro();
-                case 2 -> devolverLibro();
-                case 3 -> mostrarPrestamos();
-                case 0 -> System.out.println("🔙 Volviendo al menú principal...");
-                default -> System.out.println("⚠️ Opción inválida.");
+                case 1 -> prestarLibro();    // Registrar préstamo
+                case 2 -> devolverLibro();   // Registrar devolución
+                case 3 -> mostrarPrestamos();// Mostrar todos los préstamos
+                case 4 -> System.out.println("Volviendo al menú principal...");
+                default -> System.out.println("Opción inválida.");
             }
-        } while (opcion != 0);
+        } while (opcion != 4);
     }
 
+    // Prestar un libro a un usuario
     private void prestarLibro() {
-        System.out.print("👉 Ingresa el nombre del usuario: ");
+        System.out.print("Ingresa el nombre del usuario: ");
         String usuario = scanner.nextLine();
-
+        
+        // Validar que el usuario exista
         if (!usuarios.existeUsuario(usuario)) {
-            System.out.println("⚠️ Usuario no registrado.");
+            System.out.println("Usuario no registrado.");
             return;
         }
-
-        System.out.print("👉 Ingresa el título del libro: ");
+        
+        System.out.print("Ingresa el título del libro: ");
         String libro = scanner.nextLine();
-
+        
+        // Validar que el libro exista en el catálogo
         if (!catalogo.existeLibro(libro)) {
-            System.out.println("⚠️ Ese libro no está en el catálogo.");
+            System.out.println("Ese libro no está en el catálogo.");
             return;
         }
-
-        prestamos.putIfAbsent(usuario, new ArrayList<>());
-        prestamos.get(usuario).add(libro);
-        System.out.println("✅ Libro prestado a " + usuario);
-    }
-
-    private void devolverLibro() {
-        System.out.print("👉 Ingresa el nombre del usuario: ");
-        String usuario = scanner.nextLine();
-
-        if (!prestamos.containsKey(usuario)) {
-            System.out.println("⚠️ Ese usuario no tiene préstamos.");
-            return;
-        }
-
-        System.out.print("👉 Ingresa el título del libro a devolver: ");
-        String libro = scanner.nextLine();
-
-        if (prestamos.get(usuario).remove(libro)) {
-            System.out.println("✅ Libro devuelto.");
+        
+        // Agregar el préstamo (usa Set para evitar duplicados)
+        prestamos.putIfAbsent(usuario, new HashSet<>());
+        if (prestamos.get(usuario).add(libro)) {
+            System.out.println("Libro prestado a " + usuario);
         } else {
-            System.out.println("⚠️ Ese usuario no tenía ese libro.");
+            System.out.println("Ese usuario ya tiene prestado ese libro.");
         }
     }
 
+    // Devolver un libro
+    private void devolverLibro() {
+        System.out.print("Ingresa el nombre del usuario: ");
+        String usuario = scanner.nextLine();
+        
+        if (!prestamos.containsKey(usuario)) {
+            System.out.println("Ese usuario no tiene préstamos.");
+            return;
+        }
+        
+        System.out.print("Ingresa el título del libro a devolver: ");
+        String libro = scanner.nextLine();
+        
+        if (prestamos.get(usuario).remove(libro)) {
+            System.out.println("Libro devuelto.");
+        } else {
+            System.out.println("Ese usuario no tenía ese libro.");
+        }
+    }
+
+    // Mostrar todos los préstamos activos
     private void mostrarPrestamos() {
         if (prestamos.isEmpty()) {
-            System.out.println("📭 No hay préstamos registrados.");
+            System.out.println("No hay préstamos registrados.");
         } else {
-            System.out.println("\n📖 Préstamos registrados:");
+            System.out.println("\nPréstamos registrados:");
             for (var entry : prestamos.entrySet()) {
                 System.out.println("- Usuario: " + entry.getKey() + " → Libros: " + entry.getValue());
             }
@@ -236,34 +269,37 @@ class BibliotecaMapas {
 }
 
 
-// ==========================
 // MENÚ PRINCIPAL
-// ==========================
+
 public class BibliotecaApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        BibliotecaConjuntos moduloConjuntos = new BibliotecaConjuntos();
-        BibliotecaListas moduloListas = new BibliotecaListas();
-        BibliotecaMapas moduloMapas = new BibliotecaMapas(moduloListas, moduloConjuntos);
-
+        
+        // Se crean los módulos y se les pasa el mismo Scanner
+        BibliotecaConjuntos moduloConjuntos = new BibliotecaConjuntos(scanner);
+        BibliotecaListas moduloListas = new BibliotecaListas(scanner);
+        BibliotecaMapas moduloMapas = new BibliotecaMapas(moduloListas, moduloConjuntos, scanner);
+        
         int opcion;
         do {
-            System.out.println("\n===== 📚 SISTEMA DE BIBLIOTECA =====");
+            System.out.println("\n --- BIBLIOTECA DE EQUI-POO :) --- ");
             System.out.println("1. Módulo de Catálogo (Conjuntos)");
             System.out.println("2. Módulo de Usuarios (Listas)");
             System.out.println("3. Módulo de Préstamos (Mapas)");
-            System.out.println("0. Salir");
+            System.out.println("4. Salir");
             System.out.print("Selecciona una opción: ");
             opcion = scanner.nextInt();
-
+            
             switch (opcion) {
-                case 1 -> moduloConjuntos.iniciar();
-                case 2 -> moduloListas.iniciar();
-                case 3 -> moduloMapas.iniciar();
-                case 0 -> System.out.println("👋 Cerrando sistema de biblioteca...");
-                default -> System.out.println("⚠️ Opción inválida.");
+                case 1 -> moduloConjuntos.iniciar(); // Menú de catálogo
+                case 2 -> moduloListas.iniciar();    // Menú de usuarios
+                case 3 -> moduloMapas.iniciar();     // Menú de préstamos
+                case 4 -> System.out.println("Cerrando la biblioteca...");
+                default -> System.out.println("Opción inválida.");
             }
-        } while (opcion != 0);
+        } while (opcion != 4);
+        
+        scanner.close(); // Cierra el scanner al terminar
     }
 }
+
