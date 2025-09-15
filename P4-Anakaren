@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 // Clase Coche
-/*public*/ class Coche {
+class Coche {
     
     // Constantes
     static final int MOVIMIENTO = 3;
@@ -24,24 +24,31 @@ import java.util.Scanner;
 
     // Métodos
     public void acelerar() {
-        velocidad += MOVIMIENTO;
-        System.out.println("Acelerando... Vas a " + velocidad + " km/h");
+        if (encendido) {
+            velocidad += MOVIMIENTO;
+            System.out.println("Acelerando... Vas a " + velocidad + " km/h");
+        } else {
+            System.out.println("No puedes acelerar. El coche se encuentra apagado");
+        }
     }
 
     public void frenar() {
-        velocidad -= MOVIMIENTO;
-        if (velocidad < 0){
-            velocidad = 0; // No permitir negativos
+        if (velocidad > 0) {
+            velocidad -= MOVIMIENTO;
+            if (velocidad < 0) {
+                velocidad = 0; // no permitir negativos
+            }
+            System.out.println("Frenando... Vas a " + velocidad + " km/h");
+        } else {
+            System.out.println("El coche ya está detenido");
         }
-        System.out.println("Frenando... Vas a " + velocidad + " km/h");
     }
 
     public void encender() {
         if (!encendido) {
             encendido = true;
             System.out.println("El coche se encendió");
-        } 
-        else {
+        } else {
             System.out.println("El coche ya estaba encendido.");
         }
     }
@@ -122,6 +129,7 @@ public class Main {
                     break;
                 default:
                     System.out.println("Opción no válida. Usando coche 1 por defecto.");
+                    cocheSeleccionado = coche1;
                     break;
             }
             
@@ -139,82 +147,39 @@ public class Main {
                 sc.nextLine(); // Limpiar buffer
                 
                 switch (opMenu) {
-                    // Encender
                     case 1:
                         cocheSeleccionado.encender();
                         break;
-                        
-                    // Acelerar
                     case 2:
                         cocheSeleccionado.acelerar();
                         break;
-                        
-                    // Frenar
                     case 3:
-                        if (cocheSeleccionado.velocidad > 0) {
-                            cocheSeleccionado.frenar();
-                            if (cocheSeleccionado.velocidad == 0) {
-                                System.out.println("El coche está detenido. ¿Quieres apagarlo?");
-                                System.out.println("1. Sí\t2. No");
-                                int opApagar = sc.nextInt();
-                                sc.nextLine();
-                                if (opApagar == 1) {
-                                    cocheSeleccionado.apagar();
-                                    continuarCoche = false;
-                                    continuarPrograma = false;
-                                } 
-                                else {
-                                    System.out.println("¿Quieres acelerar o cambiar de coche?");
-                                    System.out.println("1. Acelerar\t2. Cambiar de coche");
-                                    int opExtra = sc.nextInt();
-                                    sc.nextLine();
-                                    if (opExtra == 1) {
-                                        cocheSeleccionado.acelerar();
-                                    }
-                                    else {
-                                        continuarCoche = false;
-                                        continuarPrograma = false;
-                                    }
-                                }
+                        cocheSeleccionado.frenar();
+                        if (cocheSeleccionado.velocidad == 0) {
+                            System.out.println("El coche está detenido.");
+                            System.out.println("¿Qué desea hacer?");
+                            System.out.println("1) Acelerar");
+                            System.out.println("2) Apagar y escoger otro coche.\n");
+
+                            int opExtra = sc.nextInt();
+                            sc.nextLine();
+                            if(opExtra == 1) {
+                                cocheSeleccionado.acelerar();
+                            } else if (opExtra == 2) {
+                                cocheSeleccionado.apagar();
+                                continuarCoche = false; // sale al menú principal
                             }
                         } 
-                        else {
-                            System.out.println("El coche ya está detenido.");
-                            System.out.println("¿Quieres apagarlo?");
-                            System.out.println("1. Sí\t2. No");
-                            int opApagar = sc.nextInt();
-                            sc.nextLine();
-                            if (opApagar == 1) {
-                                cocheSeleccionado.apagar();
-                                continuarCoche = false;
-                                continuarPrograma = false;
-                            } else {
-                                System.out.println("¿Quieres acelerar o cambiar de coche?");
-                                System.out.println("1. Acelerar\t2. Cambiar de coche");
-                                int opExtra = sc.nextInt();
-                                sc.nextLine();
-                                if (opExtra == 1){
-                                    cocheSeleccionado.acelerar();  
-                                } 
-                                else {
-                                continuarCoche = false;
-                                }
-                            }
-                        }
                         break;
-                        
-                    // Apagar
                     case 4:
                         cocheSeleccionado.apagar();
                         break;
-                        
-                    // Salir
                     case 5:
                         System.out.println("Estacionando todos los coches...");
                         System.out.println("Adiós :)");
+                        continuarCoche = false;
+                        continuarPrograma = false;
                         break;
-                    
-                    // Default
                     default:
                         System.out.println("Opción no válida");
                         break;
