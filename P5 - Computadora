@@ -1,0 +1,16 @@
+// Clase Computadora
+class Computadora {
+
+    // Atributos
+    public boolean status;
+
+    // Constructor
+    public Computadora() {
+        this.status = true;
+    }
+
+    // Métodos
+    public void mandarImprimir() {
+        System.out.println("Tu documento se envió a la fila de impresión :)");
+    }
+}
