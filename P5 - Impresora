@@ -1,0 +1,16 @@
+// Clase Impresora
+public class Impresora {
+
+    // Atributos
+    public boolean status;
+
+    // Constructor
+    public Impresora() {
+        this.status = true;
+    }
+
+    // Métodos
+    public void imprimir() {
+        System.out.println("Se está imprimiendo... :)");
+    }
+}
