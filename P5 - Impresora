@@ -1,16 +1,43 @@
-// Clase Impresora
-public class Impresora {
+// Impresora
 
+public class Impresora {
+    
     // Atributos
-    public boolean status;
+    private String modelo;
+    private boolean status;
 
     // Constructor
-    public Impresora() {
+    public Impresora(String modelo) {
+        this.modelo = modelo;
         this.status = true;
     }
-
+    
     // Métodos
     public void imprimir() {
         System.out.println("Se está imprimiendo... :)");
+        this.status = false;
+    }
+
+    // Getter
+    public String getModelo() {
+        return this.modelo;
+    }
+    
+    public boolean tieneTinta() {
+        return this.status;
+    }
+    
+    public String getStatus() {
+        if (this.status){
+            return "Tinta suficiente :)";
+        }
+        else {
+            return "Se acabó la tinta :(";
+        }
+    }
+    
+    // Setter
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }
