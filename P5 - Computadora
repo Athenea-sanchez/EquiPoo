@@ -1,16 +1,42 @@
-// Clase Computadora
-class Computadora {
+// Computadora
 
+public class Computadora {
+    
     // Atributos
-    public boolean status;
+    private String nombre;
+    private boolean status;
 
     // Constructor
-    public Computadora() {
+    public Computadora(String nombre) {
+        this.nombre = nombre;
         this.status = true;
     }
-
+    
     // Métodos
     public void mandarImprimir() {
         System.out.println("Tu documento se envió a la fila de impresión :)");
+    }
+    
+    public void usarComputadora() {
+        System.out.println("Puedes usar la computadora :)");
+    }
+
+    // Getter
+    public String getNombre() {
+        return this.nombre;
+    }
+    
+    public String getStatus() {
+        if (this.status){
+            return "Disponible :)";
+        }
+        else {
+            return "Ocupada :(";
+        }
+    }
+    
+    // Setter
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }
