@@ -1,0 +1,187 @@
+import java.util.Scanner;
+
+public class Main {
+    
+    // Función para mostar el resultado
+        public static void mostarDetalles(Computadora computadoraSeleccionada, Impresora impresoraSeleccionada) {
+            System.out.println("\n----- RESUMEN DE ACCIÓN -----");
+            if (computadoraSeleccionada != null) {
+                if (impresoraSeleccionada != null) {
+                    System.out.println("Has usado: ");
+                    System.out.println("Computadora: " + computadoraSeleccionada.getNombre());
+                    System.out.println("Impresora: " + impresoraSeleccionada.getModelo());
+                }
+                else {
+                    System.out.println("Has usado: ");
+                    System.out.println("Computadora: " + computadoraSeleccionada.getNombre());
+                    System.out.println("Impresora: No se ha ocupado ninguna");
+                }
+            } 
+            else {
+                System.out.println("No has usado nada");
+            }
+        }
+    
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Crear computadoras
+        Computadora pc1 = new Computadora("Computadora Blanca");
+        Computadora pc2 = new Computadora("Computadora Negra");
+        Computadora pc3 = new Computadora("Computadora Gris");
+        
+        // Crear impresoras
+        Impresora impColor = new Impresora("Impresora a color");
+        Impresora impBN = new Impresora("Impresora a blanco y negro");
+        
+        // Control del programa
+        boolean continuarPrograma = true;
+        while (continuarPrograma) {
+            System.out.println("\n----- MENÚ -----");
+            System.out.println("1. Ver status de computadoras");
+            System.out.println("2. Ver status de impresoras");
+            System.out.println("3. Usar computadora / Imprimir");
+            System.out.println("4. Salir");
+            System.out.print("\nElije una opción: ");
+            
+            int opMenu = sc.nextInt();
+            sc.nextLine();
+            
+            switch (opMenu) {
+                case 1: // Status de las computadoras
+                    System.out.println("\n");
+                    System.out.println("Computadora 1: " + pc1.getStatus());
+                    System.out.println("Computadora 2: " + pc2.getStatus()); 
+                    System.out.println("Computadora 3: " + pc3.getStatus());
+                    System.out.println("\n");
+                    break;
+                    
+                case 2: // Status de las impresoras
+                    System.out.println("\n");
+                    System.out.println("Impresora a color: " + impColor.getStatus()); 
+                    System.out.println("Impresora a blanco y negro: " + impBN.getStatus());
+                    System.out.println("\n");
+                    break;
+                    
+                case 3: //Usar computadora o imprimir
+                    
+                    // Seleccionar computadoras 
+                    
+                    // Variables para seleccionar
+                    Computadora pcSeleccionada = null;
+                    Impresora impSeleccionada = null;
+                    
+                    // Preguntar al usuario 
+                    System.out.println("\n----- COMPUTADORAS -----");
+                    System.out.println("1. " + pc1.getNombre()); 
+                    System.out.println("2. " + pc2.getNombre());
+                    System.out.println("3. " + pc3.getNombre());
+                    System.out.print("\nElige la computadora que quieres usar (1,2,3): ");
+                    
+                    int opPc = sc.nextInt();
+                    
+                    switch (opPc) {
+                        case 1:
+                            pcSeleccionada = pc1;
+                            break;
+                        case 2:
+                            pcSeleccionada = pc2;
+                            break;
+                        case 3:
+                            pcSeleccionada = pc3;
+                            break;
+                        default:
+                            System.out.println("Opción no válida. Usando computadora 1 por defecto.");
+                            pcSeleccionada = pc1;
+                            break;
+                    }
+                    
+                    // Poner que la computadora está ocupada
+                    pcSeleccionada.setStatus(false);
+                    
+                    // Desplegar menú de opciones 
+                    System.out.println("\nHas seleccionado: " + pcSeleccionada.getNombre());
+                    System.out.println("¿Qué deseas hacer?");
+                    System.out.println("1. Usar la computadora");
+                    
+                    // Solo mostrar la opción de imprimir cuando haya tintas disponibles
+                    if (impColor.tieneTinta() || impBN.tieneTinta()) {
+                       System.out.println("2. Imprimir"); 
+                    }
+                    else {
+                        System.out.println("2. (Lo sentimos, está fuera de servicio)"); 
+                    }
+                    System.out.println("3. Regresar al menú principal");
+                    System.out.println("4. Salir");
+                    System.out.print("\nSelecciona una opción: ");
+                    
+                    int opAccion = sc.nextInt();
+                    
+                    switch (opAccion) {
+                        case 1:
+                            pcSeleccionada.usarComputadora();
+                            mostarDetalles(pcSeleccionada, null);
+                            break;
+                            
+                        case 2:
+                            // Verificar que la opción era válida 
+                            if (!impColor.tieneTinta() && !impBN.tieneTinta()) {
+                                System.out.println("¡Error! No hay impresoras con tinta.");
+                                break;
+                            }
+                            
+                            System.out.println("\n----- IMPRESORAS DISPONIBLES -----");
+                            // Solo mostrar las impresoras que tienen tinta
+                            if (impColor.tieneTinta()) {
+                                System.out.println("1. " + impColor.getModelo());
+                            }
+                            if (impBN.tieneTinta()) {
+                                System.out.println("2. " + impBN.getModelo());
+                            }
+                            System.out.print("\nElige la impresora: ");
+                            int opImp = sc.nextInt();
+                            
+                            // Seleccionar impresora
+                            if (opImp == 1 && impColor.tieneTinta()) {
+                                impSeleccionada = impColor;
+                            } 
+                            else if (opImp == 2 && impBN.tieneTinta()) {
+                                impSeleccionada = impBN;
+                            } 
+                            else {
+                                System.out.println("Opción no válida");
+                                break; 
+                            }
+                            
+                            pcSeleccionada.mandarImprimir();
+                            impSeleccionada.imprimir(); 
+                            mostarDetalles(pcSeleccionada, impSeleccionada);
+                            break;
+                            
+                        case 3:
+                            System.out.println("Volviendo al menú principal...");
+                            break;
+                            
+                        case 4:
+                            System.out.println("Adiós :)");
+                            continuarPrograma = false;
+                            break;
+                            
+                        default:
+                            System.out.println("Opción no válida");
+                            break;
+                    }
+                    
+                case 4:
+                    System.out.println("Adiós :)");
+                    continuarPrograma = false;
+                    break;
+                    
+                default:
+                    System.out.println("Opción no válida");
+                    break;
+            }
+        }
+        sc.close();
+    }
+}
