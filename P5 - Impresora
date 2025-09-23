@@ -1,10 +1,9 @@
-// Impresora
-
+//Impresora
 public class Impresora {
     
     // Atributos
     private String modelo;
-    private boolean status;
+    private boolean status; // true = tiene tinta, false = sin tinta
 
     // Constructor
     public Impresora(String modelo) {
@@ -15,7 +14,7 @@ public class Impresora {
     // Métodos
     public void imprimir() {
         System.out.println("Se está imprimiendo... :)");
-        this.status = false;
+        this.status = false; // simulamos que la tinta se gastó
     }
 
     // Getter
@@ -27,12 +26,11 @@ public class Impresora {
         return this.status;
     }
     
-    public String getStatus() {
+    public void getStatus() {
         if (this.status){
-            return "Tinta suficiente :)";
-        }
-        else {
-            return "Se acabó la tinta :(";
+            System.out.println("Tinta suficiente :)");
+        } else {
+            System.out.println("Se acabó la tinta :(");
         }
     }
     
