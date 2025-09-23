@@ -1,10 +1,9 @@
-// Computadora
-
+//Computadora
 public class Computadora {
     
     // Atributos
     private String nombre;
-    private boolean status;
+    private boolean status; // true = disponible, false = ocupada
 
     // Constructor
     public Computadora(String nombre) {
@@ -19,6 +18,7 @@ public class Computadora {
     
     public void usarComputadora() {
         System.out.println("Puedes usar la computadora :)");
+        this.status = false; // marcamos como ocupada
     }
 
     // Getter
@@ -27,12 +27,7 @@ public class Computadora {
     }
     
     public String getStatus() {
-        if (this.status){
-            return "Disponible :)";
-        }
-        else {
-            return "Ocupada :(";
-        }
+        return this.status ? "Disponible :)" : "Ocupada :(";
     }
     
     // Setter
