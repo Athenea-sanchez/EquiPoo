@@ -1,0 +1,284 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Figura[] figuras = new Figura[10]; // Arreglo para máximo 10 figuras
+        int contadorFiguras = 0;
+        int opcion;
+        
+        do {
+            System.out.println("\n¿Qué figura quieres crear?");
+            System.out.println("1. Círculo");
+            System.out.println("2. Rectángulo");
+            System.out.println("3. Cuadrado");
+            System.out.println("4. Pentágono");
+            System.out.println("5. SALIR y calcular área total");
+            System.out.print("Elige una opción (1-5): ");
+            
+            opcion = scanner.nextInt();
+            
+            if (contadorFiguras >= figuras.length && opcion != 5) {
+                System.out.println("Límite alcanzado.");
+                opcion = 5;
+            }
+            
+            switch (opcion) {
+                case 1:
+                    crearCirculo(scanner, figuras, contadorFiguras);
+                    contadorFiguras++;
+                    break;
+                case 2:
+                    crearRectangulo(scanner, figuras, contadorFiguras);
+                    contadorFiguras++;
+                    break;
+                case 3:
+                    crearCuadrado(scanner, figuras, contadorFiguras);
+                    contadorFiguras++;
+                    break;
+                case 4:
+                    crearPentagono(scanner, figuras, contadorFiguras);
+                    contadorFiguras++;
+                    break;
+                case 5:
+                    System.out.println("\nSaliendo...");
+                    break;
+                default:
+                    System.out.println("Opción inválida. Intenta de nuevo.");
+            }
+            
+        } while (opcion != 5);
+        
+        // Calcular y mostrar área total
+        calcularAreaTotal(figuras, contadorFiguras);
+        
+        scanner.close();
+    }
+    
+    public static void crearCirculo(Scanner scanner, Figura[] figuras, int index) {
+        System.out.print("Ingresa el radio del círculo: ");
+        float radio = scanner.nextFloat();
+        System.out.print("Ingresa el diámetro del círculo: ");
+        float diametro = scanner.nextFloat();
+        scanner.nextLine(); // Limpiar buffer
+        System.out.print("Ingresa el color del círculo: ");
+        String color = scanner.nextLine();
+        
+        Circulo circulo = new Circulo(radio, diametro, color);
+        circulo.Area(); // Calcula y guarda en el arreglo
+        figuras[index] = circulo;
+        
+        System.out.println("Círculo creado exitosamente!");
+    }
+    
+    public static void crearRectangulo(Scanner scanner, Figura[] figuras, int index) {
+        System.out.print("Ingresa la base del rectángulo: ");
+        float base = scanner.nextFloat();
+        System.out.print("Ingresa la altura del rectángulo: ");
+        float altura = scanner.nextFloat();
+        scanner.nextLine(); // Limpiar buffer
+        System.out.print("Ingresa el color del rectángulo: ");
+        String color = scanner.nextLine();
+        
+        Rectangulo rectangulo = new Rectangulo(base, altura, color);
+        rectangulo.Area(); // Calcula y guarda en el arreglo
+        figuras[index] = rectangulo;
+        
+        System.out.println("Rectángulo creado exitosamente!");
+    }
+    
+    public static void crearCuadrado(Scanner scanner, Figura[] figuras, int index) {
+        System.out.print("Ingresa el lado del cuadrado: ");
+        float lado = scanner.nextFloat();
+        scanner.nextLine(); // Limpiar buffer
+        System.out.print("Ingresa el color del cuadrado: ");
+        String color = scanner.nextLine();
+        
+        Cuadrado cuadrado = new Cuadrado(lado, color);
+        cuadrado.Area(); // Calcula y guarda en el arreglo
+        figuras[index] = cuadrado;
+        
+        System.out.println("Cuadrado creado exitosamente!");
+    }
+    
+    public static void crearPentagono(Scanner scanner, Figura[] figuras, int index) {
+        System.out.print("Ingresa el lado del pentágono: ");
+        float lado = scanner.nextFloat();
+        System.out.print("Ingresa la apotema del pentágono: ");
+        float apotema = scanner.nextFloat();
+        scanner.nextLine(); // Limpiar buffer
+        System.out.print("Ingresa el color del pentágono: ");
+        String color = scanner.nextLine();
+        
+        Pentagono pentagono = new Pentagono(lado, apotema, color);
+        pentagono.Area(); // Calcula y guarda en el arreglo
+        figuras[index] = pentagono;
+        
+        System.out.println("Pentágono creado exitosamente!");
+    }
+    
+    public static void calcularAreaTotal(Figura[] figuras, int cantidad) {
+        if (cantidad == 0) {
+            System.out.println("\nNo se crearon figuras. Área total: 0");
+            return;
+        }
+        
+        float areaTotal = 0;
+        
+        for (int i = 0; i < cantidad; i++) {
+            Figura figura = figuras[i];
+            float areaFigura = figura.areas[0];
+            areaTotal += areaFigura;
+            
+            System.out.printf("Figura %d: %s - Área: %.2f\n", 
+                i + 1, figura.getClass().getSimpleName(), areaFigura);
+        }
+        
+        System.out.printf("ÁREA TOTAL DE TODAS LAS FIGURAS: %.2f\n", areaTotal);
+    }
+}
+
+abstract class Figura {
+    //Atributos 
+    public String Color; 
+    public float[] areas; // Arreglo solo para áreas de TODAS las figuras
+  
+    //Constructor
+    public Figura(String Color){
+        this.Color = Color; 
+        this.areas = new float[1]; // Solo para el área
+    }
+    
+    // Métodos abstractos
+    abstract void Area();
+    abstract void Perimetro();
+    
+    // Método para mostrar el área del arreglo
+    public void mostrarArea() {
+        System.out.println("Área almacenada: " + areas[0]);
+    }
+}
+
+class Circulo extends Figura {
+    //Atributos propios de la clase 
+    public float radio; 
+    public float diametro; 
+    public final float pi = 3.1416f; 
+
+    //Constructor 
+    public Circulo(float radio, float diametro, String Color){
+        super(Color); 
+        this.radio = radio; 
+        this.diametro = diametro; 
+    }
+
+    // Método Area() que usa radio
+    @Override 
+    void Area(){
+        float a = pi * radio * radio; 
+        System.out.println("El area del circulo es: " + a);
+        areas[0] = a;
+    }
+
+    // Método Area() sobrecargado que recibe radio como parámetro
+    void Area(float radioUsuario){
+        float a = pi * radioUsuario * radioUsuario; 
+        System.out.println("El area del circulo (con radio " + radioUsuario + ") es: " + a);
+        areas[0] = a;
+    }
+
+    // Método Area() sobrecargado que recibe diámetro como parámetro
+    void Area(double diametroUsuario){
+        float a = (pi * (float)diametroUsuario * (float)diametroUsuario) / 4; 
+        System.out.println("El area del circulo (con diametro " + diametroUsuario + ") es: " + a);
+        areas[0] = a;
+    }
+
+    @Override
+    void Perimetro(){
+        float p = pi * 2 * radio; 
+        System.out.println("El perimetro es: " + p);
+    }
+    
+    // Método Perimetro sobrecargado para diámetro
+    void PerimetroConDiametro(){
+        float p = pi * diametro; 
+        System.out.println("El perimetro es: " + p);
+    }
+}
+
+class Rectangulo extends Figura{
+    //Atributos propios de la clase 
+    public float base; 
+    public float altura; 
+
+    //Constructor 
+    public Rectangulo(float base, float altura, String Color){
+        super(Color); 
+        this.base = base; 
+        this.altura = altura; 
+    }
+    
+    //Métodos
+    @Override 
+    void Area(){
+        float a = base * altura; 
+        System.out.println("El area del rectangulo es: " + a);
+        areas[0] = a;
+    }
+
+    @Override
+    void Perimetro(){
+        float p = 2 * (base + altura); 
+        System.out.println("El perimetro del rectangulo es: " + p);
+    }
+}
+
+class Cuadrado extends Figura {
+    public float lado;
+    
+    //Constructor
+    public Cuadrado(float lado, String Color){
+        super(Color);
+        this.lado = lado;
+    }
+    
+    @Override
+    void Area(){
+        float a = lado * lado;
+        System.out.println("El area del cuadrado es: " + a);
+        areas[0] = a;
+    }
+    
+    @Override
+    void Perimetro(){
+        float p = 4 * lado;
+        System.out.println("El perimetro del cuadrado es: " + p);
+    }
+}
+
+class Pentagono extends Figura {
+    public float lado;
+    public float apotema;
+    
+    //Constructor
+    public Pentagono(float lado, float apotema, String Color){
+        super(Color);
+        this.lado = lado;
+        this.apotema = apotema;
+    }
+    
+    @Override
+    void Area(){
+        float perimetro = 5 * lado;
+        float a = (perimetro * apotema) / 2;
+        System.out.println("El area del pentagono es: " + a);
+        areas[0] = a;
+    }
+    
+    @Override
+    void Perimetro(){
+        float p = 5 * lado;
+        System.out.println("El perimetro del pentagono es: " + p);
+    }
+}
