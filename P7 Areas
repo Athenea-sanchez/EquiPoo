@@ -10,7 +10,7 @@ public class Main {
         do {
             System.out.println("\n¿Qué figura quieres crear?");
             System.out.println("1. Círculo");
-            System.out.println("2. Rectángulo");
+            System.out.println("2. Triangulo");
             System.out.println("3. Cuadrado");
             System.out.println("4. Pentágono");
             System.out.println("5. SALIR y calcular área total");
@@ -29,7 +29,7 @@ public class Main {
                     contadorFiguras++;
                     break;
                 case 2:
-                    crearRectangulo(scanner, figuras, contadorFiguras);
+                    crearTriangulo(scanner, figuras, contadorFiguras);
                     contadorFiguras++;
                     break;
                 case 3:
@@ -71,16 +71,16 @@ public class Main {
         System.out.println("Círculo creado exitosamente!");
     }
     
-    public static void crearRectangulo(Scanner scanner, Figura[] figuras, int index) {
-        System.out.print("Ingresa la base del rectángulo: ");
+    public static void crearTriangulo(Scanner scanner, Figura[] figuras, int index) {
+        System.out.print("Ingresa la base del triangulo: ");
         float base = scanner.nextFloat();
-        System.out.print("Ingresa la altura del rectángulo: ");
+        System.out.print("Ingresa la altura del triangulo: ");
         float altura = scanner.nextFloat();
         scanner.nextLine(); // Limpiar buffer
-        System.out.print("Ingresa el color del rectángulo: ");
+        System.out.print("Ingresa el color del tringulo: ");
         String color = scanner.nextLine();
         
-        Rectangulo rectangulo = new Rectangulo(base, altura, color);
+        Triangulo triangulo = new Rectangulo(base, altura, color);
         rectangulo.Area(); // Calcula y guarda en el arreglo
         figuras[index] = rectangulo;
         
