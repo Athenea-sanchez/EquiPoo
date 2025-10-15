@@ -72,19 +72,19 @@ public class Main {
     }
     
     public static void crearTriangulo(Scanner scanner, Figura[] figuras, int index) {
-        System.out.print("Ingresa la base del triangulo: ");
+        System.out.print("Ingresa la base del triángulo: ");
         float base = scanner.nextFloat();
-        System.out.print("Ingresa la altura del triangulo: ");
+        System.out.print("Ingresa la altura del triángulo: ");
         float altura = scanner.nextFloat();
         scanner.nextLine(); // Limpiar buffer
-        System.out.print("Ingresa el color del tringulo: ");
+        System.out.print("Ingresa el color del triángulo: ");
         String color = scanner.nextLine();
         
-        Triangulo triangulo = new Rectangulo(base, altura, color);
-        rectangulo.Area(); // Calcula y guarda en el arreglo
-        figuras[index] = rectangulo;
+        Triangulo triangulo = new Triangulo(base, altura, color);
+        triangulo.Area(); // Calcula y guarda en el arreglo
+        figuras[index] = triangulo;
         
-        System.out.println("Rectángulo creado exitosamente!");
+        System.out.println("Triángulo creado exitosamente!");
     }
     
     public static void crearCuadrado(Scanner scanner, Figura[] figuras, int index) {
@@ -207,13 +207,13 @@ class Circulo extends Figura {
     }
 }
 
-class Rectangulo extends Figura{
+class Triangulo extends Figura{
     //Atributos propios de la clase 
     public float base; 
     public float altura; 
 
     //Constructor 
-    public Rectangulo(float base, float altura, String Color){
+    public Triangulo(float base, float altura, String Color){
         super(Color); 
         this.base = base; 
         this.altura = altura; 
@@ -222,15 +222,16 @@ class Rectangulo extends Figura{
     //Métodos
     @Override 
     void Area(){
-        float a = base * altura; 
-        System.out.println("El area del rectangulo es: " + a);
+        float a = (base * altura) / 2; 
+        System.out.println("El area del triángulo es: " + a);
         areas[0] = a;
     }
 
     @Override
     void Perimetro(){
-        float p = 2 * (base + altura); 
-        System.out.println("El perimetro del rectangulo es: " + p);
+        // Para un triángulo genérico, asumimos que es equilátero para simplificar
+        float p = 3 * base; 
+        System.out.println("El perimetro del triángulo es: " + p);
     }
 }
 
