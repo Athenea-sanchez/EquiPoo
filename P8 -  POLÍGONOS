@@ -1,0 +1,97 @@
+public class Poligono {
+	
+	public double area(){
+		return 0d;
+	}
+
+	public double perimetro(){
+		return 0d;
+	}
+
+	public String toString (){
+		return "Polígono";
+	}
+}
+
+public class Cuadrilatero extends Poligono {
+	
+	private int alfa, beta;
+	private float a, b;
+	private float base , altura;
+
+	public void setBase(){}
+
+	public void setAltura(){}
+
+	public String toString(){
+		return "Cuadrilátero";
+	} 
+}
+
+public class Triangulo extends Poligono {
+	
+	private int alfa, beta, gama;
+	private float a, b, c;
+	private float base , altura;
+
+	public void setBase(){}
+
+	public void setAltura(){}
+
+	public String toString(){
+		return "Triángulo";
+	} 
+}
+
+public class PruebaFigurasGeometricas {
+
+	public static void main(String[] args){
+		
+		Poligono poligono = new Poligono();
+
+		// Polígono puede comportarse como objeto
+		Object objeto = poligono;
+		System.out.println(objeto);
+
+		// Una referencia puede ser reasiganada a otros objetos 
+		poligono = new Triangulo();
+		System.out.println(poligono);
+		poligono = new Cuadrilatero();
+		System.out.println(poligono);
+		
+		// Solo se pueden ejecutar los métodos que están definidos
+		// en la referencia, sin embargo, se ejecutarán como están 
+		// implementados en la instancia
+		// El método toString se puede ejecutar porque está definido
+		// en Polígono, sin embargo, se va a ejecutar como está 
+		// implementado en la instancia (Cuadrilátero en este caso).
+		System.out.println(poligono);
+		// El método setBase no está definido en Polígono, por lo tanto
+		// la siguiente instrucción marcaría un error:
+		// poligono.setBase(5.5);
+	}
+}
+
+public class MetodoPolimorfico {
+	
+	public static void main (String[] args){
+		Poligono poligono = new Poligono();
+		getPoligono(poligono);
+		poligono = new Triangulo();
+		getPoligono(poligono);
+		poligono = new Cuadrilatero();
+		getPoligono(poligono);
+	}
+
+	public static void getPoligono(Poligono p){
+		if (p instanceof Triangulo){
+			System.out.println("El objeto es un triángulo");
+		} else {
+			if (p instanceof Cuadrilatero){
+				System.out.println("El objeto es un cuadrilatero");
+			} else {
+				System.out.println("El objeto es un polígono");
+			}
+		}
+	}
+}
