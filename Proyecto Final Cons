@@ -1,0 +1,202 @@
+//Agregar comentarios que indican la evolución del proyecto (es decir) documentación 
+import java.util.Scanner;
+
+// Declaración de la clase padre
+public class VehiculoMotorizado {
+	// Declaramos los atributos
+	String modelo;
+	String marca;
+	String color;
+	int anio;
+	int velocidadMaxima;
+	int velocidad;
+
+	// Constructor para inicializar los atributos
+	public VehiculoMotorizado(String modelo, String marca, String color, int anio, int velocidadMaxima) {
+		this.modelo = modelo;
+		this.marca = marca;
+		this.color = color;
+		this.anio = anio;
+		this.velocidadMaxima = velocidadMaxima;
+		this.velocidad = 0; // siempre empieza en 0
+	}
+
+	public void acelerar(int velAcelerar) {
+		if (this.velocidad + velAcelerar <= this.velocidadMaxima) {
+			this.velocidad += velAcelerar;
+			System.out.println("El vehículo va a " + this.velocidad + " km/h.");
+		} else {
+			System.out.println("El vehículo no puede superar la velocidad máxima de " + this.velocidadMaxima + " km/h.");
+		}
+	}
+
+	public void frenar(int velFrenar) {
+		if (this.velocidad - velFrenar <= 0) {
+			this.velocidad = 0;
+			System.out.println("El vehículo está detenido.");
+		} else {
+			this.velocidad -= velFrenar;
+			System.out.println("El vehículo va a " + this.velocidad + " km/h.");
+		}
+	}
+
+	public void encender() {
+		System.out.println("El vehículo está encendido...");
+	}
+
+	public void apagar() {
+		System.out.println("El vehículo está apagado...");
+	}
+
+	public String datosVehiculo() {
+		return "Ese vehículo es un " + this.modelo + " de la marca " + this.marca + " y color " + this.color +
+				".\nEs del año " + this.anio + " y puede alcanzar los " + this.velocidadMaxima + " km/h.\n";
+	}
+
+	// Método main dentro de la clase
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		//Creamos 2 objetos para crear una sobrecarga de métodos
+		//Nos apoyamos de una funcion auxiliar para crear el vehiculo de manera mas sencilla 
+		VehiculoMotorizado v1 = crearVehiculo (sc, 1);
+		VehiculoMotorizado v2 = crearVehiculo(sc, 2); 
+
+		//Mostramos los datos del vehiculo
+		System.out.println("****** Vehiculo 1 ******");
+		System.out.println(v1.datosVehiculo());
+
+		System.out.println("****** Vehiculo 2 ******");
+		System.out.println(v2.datosVehiculo());
+
+		//Menu de la sobrecarga para el método acelerar (aceleraraá varias veces)
+		int op;
+		do{
+			System.out.prinln("---Bienvenido a su vehiculo---");
+			System.out.prinln("\t¿Qué desea realizar?");
+			System.out.prinln("\t1)Encender vehiculo 1");
+			System.out.prinln("\t2)Encender vehiculo 2");
+			System.out.prinln("\t3)Acelerar vehiculo 1 (una vez)");
+			System.out.prinln("\t4)Acelerar vehiculo 1 (varias veces)");
+			System.out.prinln("\t5)Acelerar vehiculo 2 (una vez)");
+			System.out.prinln("\t6)Acelerar vehiculo 2 (varias veces)");
+			System.out.prinln("\t7)Frenar vehiculo 1 (una vez)");
+			System.out.prinln("\t8)Frenar vehiculo 1 (varias veces)");
+			System.out.prinln("\t9)Frenar vehiculo 2 (una vez)");
+			System.out.prinln("\t10)Frenar vehiculo 2 (varias veces)");
+			System.out.prinln("\t11)Apagar vehiculo 1");
+			System.out.prinln("\t12)Apagar vehiculo 2");
+			System.out.prinln("\t13)Salir\n");
+
+			op = sc.nextInt();
+
+			switch(op) {
+			case 1:
+				v1.encender(v1);
+				break;
+			case 2:
+				v2.encender(v2);
+				break;
+			case 3:
+				System.out.prinln("¿Cuánto desea acelerar el vehiculo 1?");
+				int ace1 = sc.nextInt();
+				v1.acelerar(ace1);
+				break;
+			case 4:
+				System.out.println("¿Cuánto desea acelarar su vehiculo 1?\t");
+				int aceRepetida1 = sc.nextInt();
+				System.out.println("¿Cuántas veces?\t");
+				int  rep1= sc.nextInt();
+				v1.acelerar(aceRepetida1, rep1);
+				break;
+			case 5:
+				System.out.prinln("¿Cuánto desea acelerar su vehiculo 2?");
+				int ace2 = sc.nextInt();
+				v1.acelerar(ace2);
+				break;
+			case 6:
+				System.out.println("¿Cuánto desea acelarar su vehiculo 2?\t");
+				int aceRepetida2 = sc.nextInt();
+				System.out.println("¿Cuántas veces?\t");
+				int  rep2= sc.nextInt();
+				v1.acelerar(aceRepetida2, rep2);
+				break;
+			case 7:
+				System.out.prinln("¿Cuánto desea frenar su vehiculo?");
+				int fren1 = sc.nextInt();
+				v1.frenar(fren1);
+				break;
+			case 8:
+				System.out.println("¿Cuánto desea frenar su vehiculo?\t");
+				int frenRepetida1 = sc.nextInt();
+				System.out.println("¿Cuántas veces?\t");
+				int  veces1= sc.nextInt();
+				v1.acelerar(frenRepetida1, veces1);
+				break;
+			case 9:
+				System.out.prinln("¿Cuánto desea frenar su vehiculo?");
+				int fren2 = sc.nextInt();
+				v1.frenar(fren2);
+				break;
+			case 10:
+				System.out.println("¿Cuánto desea frenar su vehiculo?\t");
+				int frenRepetida2 = sc.nextInt();
+				System.out.println("¿Cuántas veces?\t");
+				int  veces2= sc.nextInt();
+				v1.acelerar(frenRepetida2, veces2);
+				break;
+			case 11:
+				v1.apagar();
+				break;
+			case 12:
+				v2.apagar();
+				break;
+			case 13:
+				System.out.println("Hasta luego\n");
+			default:
+				System.out.println("Es opcion no esta disponible\n");
+			}
+		} while(op != 13);
+	}
+
+	//Metodo auxiliar para crear vehiculos
+	
+}
+
+public class DosRuedas extends VehiculoMotorizado {
+	//Declaramos sus nuevos atributos
+	String tipoManubrio;
+	boolean casco;
+
+	//Constructor para inicializar los atributos: 
+	public DosRuedas (String tipoManubrio, boolean casco) {
+		this.tipoManubrio = tipoManubrio;
+		this.casco = casco;
+	}
+
+	//Declaramos sus métodos
+	public void derrapar(int derrapando){
+		do {
+			System.out.println("El vehiculo esta derrapando.\n");
+			System.out.println("Para dejar de derrapar presione (2)");
+			derrapando = sc.nextInt();
+		} while (derrapando != 2);
+	}
+}
+
+public class CuatroRuedas extends VehiculoMotorizado {
+	//Declaramos sus nuevos atributos
+	String transmision;
+	int numPuertas;
+
+	//Constructor
+	public CuatroRuedas (String transmision, int numPuertas) {
+		this.transmision = transimision;
+		this.numPuertas = numPuertas;
+	}
+
+	//Declaramos su nuevo método
+	public void abrirPuertas(int numPuertas) {
+
+	}
+}
