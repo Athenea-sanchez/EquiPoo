@@ -4,22 +4,21 @@ import java.util.ArrayList;
 
 public class Principal {
 
-    // Paso 1.1: Recurso de Premios (static final)
-    private static final String[] PREMIOS = {"Concha", "Estrella", "Champiñón", "Flor de Fuego", "Super Hoja"};
+    // Arreglo static para guardar los "premios" de la caja sorpresa
+    private static final String[] PREMIOS = {"Caparazón", "Estrella", "Champiñón", "Flor de Fuego", "Monedas"};
 
     public static void main(String[] args) {
         
-        // Paso 3.1: Generador Compartido
-        // Usamos una semilla fija (42) para resultados predecibles
+        // Usamos random (con 42 como semilla para este caso)
         Random generadorCompartido = new Random(42); 
 
-        // Paso 3.2: Lanzamiento de Hilos
+        // Creamos un arreglo para guardar el nomre de los personajes (o jugadores)
         String[] nombresJugadores = {"Mario", "Luigi", "Toad", "Peach", "Yoshi"};
         
         // Lista para guardar las referencias a los hilos para el control final
         List<Thread> hilosJugadores = new ArrayList<>(); 
 
-        System.out.println("--- 🏁 Inicio de la Apertura Concurrente de Cofres ---");
+        System.out.println("--- Inicio de la Apertura de Cofres ---");
 
         // Iterar sobre el arreglo de nombres
         for (String nombre : nombresJugadores) {
@@ -49,6 +48,6 @@ public class Principal {
             System.err.println("El proceso de espera fue interrumpido.");
         }
 
-        System.out.println("\n--- 🛑 Todos los cofres se han abierto. Programa Finalizado Exitosamente. ---");
+        System.out.println("\n--- Todos los cofres se han abierto.---");
     }
 }
