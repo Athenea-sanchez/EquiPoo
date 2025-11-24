@@ -4,6 +4,11 @@
 *Clase encargada de coordinar los recursos de los jugadores y su avance a lo largo de la pista.
 *Clave para el desarrollo de funciones como: el avance de los jugadores, la aparición de cajas sorpresa cada 
 determinado número de casillas, el lanzamiento aleatorio de dichos objetos y la elaboración del ranking final de posiciones.
+
+@author: Astudillo Benítez Francisco Armando
+         Castillo Ramírez Constanza
+@since: 18 de moviembre 2025
+@version : 2.0
 */
 
 /*
