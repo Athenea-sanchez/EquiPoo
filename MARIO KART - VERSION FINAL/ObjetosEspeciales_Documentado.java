@@ -3,6 +3,11 @@
 
 *Clase encargada de almacenar los objetos especiales usados durante el juego.
 *Define los métodos que aplican el castigo de dicho objeto.
+
+@author: Ortiz Contreras Anakaren
+         Sánchez Torres Athenea
+@since: 20 de moviembre 2025
+@version : 4.0
 */
 
 public class ObjetosEspeciales {
