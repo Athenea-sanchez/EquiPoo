@@ -1,8 +1,12 @@
 import java.util.Random;
 /*
 *SUBLCLASE #4 : DADO
-
 *Clase encargada de coordinar la creación y el funcionamiento del dado.
+
+@author: Astudillo Benítez Francisco Armando
+         Castillo Ramírez Constanza
+@since: 14 de moviembre 2025
+@version : 1.0
 */
 
 public class Dado {
