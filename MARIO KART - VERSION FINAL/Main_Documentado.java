@@ -7,7 +7,7 @@ import java.util.Scanner;
          Castillo Ramírez Constanza
          Ortiz Contreras Anakaren
          Sánchez Torres Athenea
-@since: 14 de moviembre 2025
+@since: 22 de moviembre 2025
 @version : 5.0
 */
 
