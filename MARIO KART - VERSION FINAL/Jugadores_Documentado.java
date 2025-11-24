@@ -5,6 +5,10 @@
 *Implementa el método run() para asignar funciones a los hilos que representan a los jugadores.
 *Se encarga de obtener los datos de los jugadores.
 *Lanza los objetos especiales y administra los métodos que permiten su funcionamiento. 
+@author: Ortiz Contreras Anakaren
+         Sánchez Torres Athenea
+@since: 18 de moviembre 2025
+@version : 3.0
 */
 import java.util.Random;
 
