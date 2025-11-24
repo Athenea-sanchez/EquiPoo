@@ -2,6 +2,13 @@ import java.util.Scanner;
 /*
 *CLASE PRINCIPAL : MAIN
 *Encargada de crear a los jugadores (hilos), darle inicio a la carrera y colocar en funcionamiento a los jugadores.
+
+@author: Astudillo Benítez Francisco Armando
+         Castillo Ramírez Constanza
+         Ortiz Contreras Anakaren
+         Sánchez Torres Athenea
+@since: 14 de moviembre 2025
+@version : 5.0
 */
 
 public class Main {
